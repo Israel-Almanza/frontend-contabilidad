@@ -21,52 +21,24 @@ export const FormContact = (props: any) => {
     return (
         <Box sx={styleModal} >
             <InputTextFieldCustomNormal
-                label="Primer Nombre"
+                label="Nombre"
                 control={control}
                 isRequired={true}
-                nameRegister="primerNombre"
+                nameRegister="nombre"
             />
 
             <InputTextFieldCustomNormal
-                label="Segundo Nombre"
+                label="Ruta"
                 control={control}
                 isRequired={false}
-                nameRegister="segundoNombre"
+                nameRegister="ruta"
             />
 
             <InputTextFieldCustomNormal
-                label="Apellido"
+                label="Icono"
                 control={control}
                 isRequired={true}
-                nameRegister="apellido"
-            />
-
-            <InputTextFieldCustomNormal
-                label="Dirección"
-                control={control}
-                isRequired={true}
-                nameRegister="direccion"
-            />
-
-            <InputTextFieldCustomNormal
-                label="Sexo"
-                control={control}
-                isRequired={true}
-                nameRegister="sexo"
-            />
-
-            <InputDateFieldCustomNormal
-                label="Fecha de Nacimiento"
-                control={control}
-                isRequired={true}
-                nameRegister="fechaNacimiento"
-            />
-
-            <InputTextFieldCustomNormal
-                label="Número WhatsApp"
-                control={control}
-                isRequired={true}
-                nameRegister="numeroContacto"
+                nameRegister="icono"
             />
 
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>

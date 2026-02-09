@@ -96,7 +96,6 @@ export const AuthProvider = ({ children }: any) => {
         }
         //const { token, usuario } = dataUser
         // const { token, usuario } = respuesta.data
-        const token = '123'
         const usuario = {
           NOMBRE_COMPLETO: 'PEDRO SILVA',
           SEXO: 'M'
@@ -112,10 +111,10 @@ export const AuthProvider = ({ children }: any) => {
           age: 25
         }
         //const tokens = "tokens12345"
-        setStorage('token', token, 7200)
+        setStorage('token', respuesta.data.datos.token, 7200)
         localStorage.setItem('user', JSON.stringify(user));
    
-        //lamar a la api del menu 
+        //lamar a la api del mepnu 
         // const responseMenu = await AplicationConnect.get('/menu')
         // console.log("response a Menu ", responseMenu.data)
 

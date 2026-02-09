@@ -23,13 +23,10 @@ const Usuario = () => {
   const [listPerfil, setListPerfil] = useState<any>(originalRows)
 
   const columns = [
-    { id: 'PatientID', label: 'Id' },
-    { id: 'Patient Name', label: 'Nombre de Paciente' },
-    { id: 'Address', label: 'Direccion' },
-    { id: 'Sex', label: 'Sexo' },
-    { id: 'Age', label: 'Edad' },
-    { id: 'Contact', label: 'Contacto' },
-    { id: 'Estado', label: 'Estado' }
+    { id: 'nombre', label: 'Nombre' },
+    { id: 'ruta', label: 'Ruta' },
+    { id: 'icono', label: 'Icono' },
+
   ];
 
   const filters = [
@@ -37,25 +34,7 @@ const Usuario = () => {
     { label: 'Instancia', field: 'Nombre de Paciente', type: 'input' },
   ];
 
-  const url = 'clinica/pacientes';
-  //<---modal
-  const [openModalAgregarPerfil, setOpenModalAgregarPerfil] = useState(false);
-
-  const handleOpenModalAgregarPerfil = () => setOpenModalAgregarPerfil(true);
-  const handleCloseModalAgregarPerfil = () => setOpenModalAgregarPerfil(false);
-  //modal--->
-
-  //star llamar a api
-  useEffect(() => {
-    // Actualiza el título del documento usando la API del navegador
-    loadData();
-    // loadObtenerListaPerfil()
-  }, []);
-
-  const loadData = async () => {
-    setListPerfil(dataClientesJson)
-    setoriginalRows(dataClientesJson)
-  }
+  const url = 'system/menus';
 
   const RowComponent = ({ row, open, update, eliminar }) => {
     const btnDeleted = async (item: any) => {
@@ -66,25 +45,15 @@ const Usuario = () => {
 
     return (
       <TableRow>
-        <TableCell>{row.PatientID}</TableCell>
-        <TableCell>{row.name}</TableCell>
-        <TableCell>{row.Address}</TableCell>
-        <TableCell>{row.Sex}</TableCell>
-        <TableCell>{row.Age}</TableCell>
-        <TableCell>{row.Contact}</TableCell>
-        <TableCell>
-          {row?.instancia?.phone_connected ? (
-            <EstadoButton estado="ACTIVO" />
-          ) : (
-            <EstadoButton estado="INACTIVO" />
-          )}
-        </TableCell>
+        <TableCell>{row.nombre}</TableCell>
+        <TableCell>{row.ruta}</TableCell>
+        <TableCell>{row.icono}</TableCell>
         <TableCell>
           <IconButton onClick={() => btnDeleted(row)} color="secondary">
             <DeleteIcon />
           </IconButton>
-          <IconButton onClick={handleOpenModalAgregarPerfil}
-            ><EditIcon/>
+          <IconButton onClick={() => open()}
+          ><EditIcon />
           </IconButton>
         </TableCell>
       </TableRow>
@@ -122,31 +91,39 @@ const Usuario = () => {
 
       }}
       >
-
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }} >
-          <Grid item xs={11} sm={11} md={11}>
-            <Typography variant="subtitle1" gutterBottom sx={{
-              marginLeft: '10px', marginTop: '5px',
-              color: 'white', alignItems: 'center'
-            }} >
-              <ManageAccountsIcon sx={{ marginLeft: '20px', color: 'white' }} />
-              PACIENTES
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
+          <Grid size={{ xs: 8, sm: 11, md: 11 }}>
+            <Typography
+              variant="subtitle1"
+              gutterBottom
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px', // espacio entre icono y texto
+                marginLeft: '10px',
+                marginTop: '5px',
+                color: 'white',
+              }}
+            >
+              <ManageAccountsIcon sx={{ color: 'white' }} />
+              Menus
             </Typography>
           </Grid>
         </Grid>
+
       </div>
       <Container>
         <Card>
           <CardContent>
             <Grid>
-              <Grid item xl={8} lg={6} md={5} sm={4} xs={3}>
+              <Grid size={{ xl: 8, lg: 6, md: 5, sm: 4, xs: 3 }}
+              >
                 <CrudTable
                   url={url}
                   filters={filters}
                   columns={columns}
                   RowComponent={RowComponent}
                   FormComponent={FormComponent}
-                  dataStatic='clientes'
                   footerSlot={<div>Total de registros</div>}
                 />
               </Grid>
@@ -154,17 +131,8 @@ const Usuario = () => {
           </CardContent>
         </Card>
       </Container>
-      <br />
-      <ModalAgregarPerfil
-        openModalAgregarPerfil={openModalAgregarPerfil}
-        handleOpenModalAgregarPerfil={handleOpenModalAgregarPerfil}
-        handleCloseModalAgregarPerfil={handleCloseModalAgregarPerfil}
-        loadObtenerListaPerfil={loadData}
-      />
     </>
   )
-
-
 }
 
 export default Usuario
