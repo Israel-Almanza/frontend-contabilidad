@@ -1,0 +1,20 @@
+{"status": true,
+    "campos_excel": [
+        {
+            "Fecha": "2023-07-18",
+            "Sucursal Pando": "3733.00"
+        },
+        {
+            "Fecha": "2023-07-19",
+            "Sucursal Pando": "403.00"
+        }
+    ],
+    "nombre_columnas": [
+        {
+            "column_name": "Fecha"
+        },
+        {
+            "column_name": "Sucursal Pando"
+        }
+    ]
+}

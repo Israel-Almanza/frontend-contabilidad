@@ -1,0 +1,94 @@
+[
+  {
+    "id": 1,
+    "grupo": "1-Bebidas calientes con café",
+    "nombre": "2",
+    "numfact": "1166",
+    "fechayhora": "10-20-2023 13:45",
+    "cliente": "LORESA ISSA",
+    "nit": 5198586,
+    "pagar": 10
+  },
+
+  {
+    "id": 2,
+    "grupo": "1-Bebidas calientes con café",
+    "nombre": "2",
+    "numfact": "1166",
+    "fechayhora": "10-20-2023 13:45",
+    "cliente": "MARCOS",
+    "nit": 5198586,
+    "pagar": 10
+  },
+  {
+    "id": 3,
+    "grupo": "1-",
+    "nombre": "3",
+    "numfact": "1166",
+    "fechayhora": "10-20-2023 13:45",
+    "cliente": "LUCAS MARCO",
+    "nit": 5198586,
+    "pagar": 10
+  }
+,
+  {
+    "id": 4,
+    "grupo": "1-Bebidas calientes con café",
+    "nombre": "5",
+    "numfact": "1166",
+    "fechayhora": "10-20-2023 13:45",
+    "cliente": "ROBERTO CARLOS",
+    "nit": 5198586,
+    "pagar": 10
+  },
+  {
+    "id": 5,
+    "grupo": "1-Bebidas calientes con café",
+    "nombre": "11",
+    "numfact": "1166",
+    "fechayhora": "10-20-2023 13:45",
+    "cliente": "LORESA ISSA",
+    "nit": 5198586,
+    "pagar": 10
+  },
+  {
+    "id": 6,
+    "grupo": "1-Bebidas calientes con café",
+    "nombre": "6",
+    "numfact": "1166",
+    "fechayhora": "10-20-2023 13:45",
+    "cliente": "LORESA ISSA",
+    "nit": 5198586,
+    "pagar": 10
+  },
+  {
+    "id": 7,
+    "grupo": "1-Bebidas calientes con café",
+    "nombre": "5",
+    "numfact": "1166",
+    "fechayhora": "10-20-2023 13:45",
+    "cliente": "LORESA ISSA",
+    "nit": 5198586,
+    "pagar": 10
+  },
+  {
+    "id": 8,
+    "grupo": "1-Bebidas calientes con café",
+    "nombre": "11",
+    "numfact": "1166",
+    "fechayhora": "10-20-2023 13:45",
+    "cliente": "ANA MARIA",
+    "nit": 5198586,
+    "pagar": 10
+  },
+  {
+    "id": 9,
+    "grupo": "1-Bebidas calientes con café",
+    "nombre": "6",
+    "numfact": "1166",
+    "fechayhora": "10-20-2023 13:45",
+    "cliente": "Zaira",
+    "nit": 5198586,
+    "pagar": 10
+  }
+]

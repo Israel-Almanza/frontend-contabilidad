@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "usuario": "JUAN RAMALLO",
+    "fechayhorainicio": "10/20/2023 13:45",
+    "fechayhorafinal": "10/20/2023 13:45",
+    "factura": "12984-13019",
+    "canrecibos": 0,
+    "montoinicial": 1961,
+    "totalingreso": 0,
+    "totalegreso": 1913,
+    "totalefectivo": 589,
+    "totalqr": 37,
+    "totaltarjeta": 439,
+    "totaltransferencia": 0,
+    "pedidosya": 0,
+    "saldoteorico": 670,
+    "dineroentregado": 672,
+    "pagar": 10
+  },
+  {
+    "id": 1,
+    "usuario": "ANA LOPEZ",
+    "fechayhorainicio": "10/20/2023 13:45",
+    "fechayhorafinal": "10/20/2023 13:45",
+    "factura": "12984-13019",
+    "canrecibos": 0,
+    "montoinicial": 1961,
+    "totalingreso": 0,
+    "totalegreso": 1913,
+    "totalefectivo": 589,
+    "totalqr": 37,
+    "totaltarjeta": 439,
+    "totaltransferencia": 0,
+    "pedidosya": 0,
+    "saldoteorico": 867,
+    "dineroentregado": 672,
+    "pagar": 10
+  },
+  {
+    "id": 1,
+    "usuario": "LUCAS CAMARGO",
+    "fechayhorainicio": "10/20/2023 13:45",
+    "fechayhorafinal": "10/20/2023 13:45",
+    "factura": "12984-13019",
+    "canrecibos": 0,
+    "montoinicial": 1961,
+    "totalingreso": 0,
+    "totalegreso": 1913,
+    "totalefectivo": 589,
+    "totalqr": 37,
+    "totaltarjeta": 439,
+    "totaltransferencia": 0,
+    "pedidosya": 0,
+    "saldoteorico": 267,
+    "dineroentregado": 672,
+    "pagar": 10
+  }
+
+
+]

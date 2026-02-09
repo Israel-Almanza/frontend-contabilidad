@@ -1,0 +1,26 @@
+{
+    "count": 3,
+    "rows":[
+        {
+            "fecha": "2025-07-01",
+            "servicio": "Limpieza dental",
+            "precio": 30,
+            "numeroDientes": 32,
+            "observaciones": "Procedimiento realizado sin inconvenientes"
+        },
+        {
+            "fecha": "2025-07-10",
+            "servicio": "Extracción de muela",
+            "precio": 80,
+            "numeroDientes": 1,
+            "observaciones": "Se aplicó anestesia local"
+        },
+        {
+            "fecha": "2025-07-15",
+            "servicio": "Colocación de resina",
+            "precio": 50,
+            "numeroDientes": 2,
+            "observaciones": "Paciente con buena recuperación"
+        }
+    ]
+}

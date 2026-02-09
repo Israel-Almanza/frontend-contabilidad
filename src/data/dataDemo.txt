@@ -1,0 +1,61 @@
+
+//estadosCronograma
+crear columans
+{
+    "estados_cronograma": [
+        {
+            "ID_INVENTARIO_CRONOGRAMA_ESTADO": 1,
+            "DESCRIPCION": "EN PLANTA",
+            "ESTADO": 1,
+            "COLOR": "palette-Red-700 bg",
+            "ORDEN": 1
+        },
+        {
+            "ID_INVENTARIO_CRONOGRAMA_ESTADO": 2,
+            "DESCRIPCION": "EN CAMINO",
+            "ESTADO": 1,
+            "COLOR": "palette-Blue-700 bg",
+            "ORDEN": 2
+        },
+        {
+            "ID_INVENTARIO_CRONOGRAMA_ESTADO": 3,
+            "DESCRIPCION": "DESCARGANDO",
+            "ESTADO": 1,
+            "COLOR": "palette-Yellow-700 bg",
+            "ORDEN": 3
+        },
+        {
+            "ID_INVENTARIO_CRONOGRAMA_ESTADO": 4,
+            "DESCRIPCION": "ENTREGADO",
+            "ESTADO": 1,
+            "COLOR": "palette-Green-700 bg",
+            "ORDEN": 4
+        }
+    ]
+}
+********************************************
+
+///SistemaGeneralB/obtenerCronogramas 
+
+//lenar una  rows
+
+[
+    {
+        "ID_INVENTARIO_CRONOGRAMA": 17,
+        "FECHA": "2023-05-15",
+        "SUCURSAL": "Sucursal América Este",
+        "ID_TURNO": 1,
+        "TURNO": "NO PERECEDERO",
+        "DETALLE": [
+            {
+                "ID_INVENTARIO_CRONOGRAMA_REGISTRO": 30,
+                "FECHA": "2023-05-15",
+                "HORA": "10:45:37",
+                "ID_INVENTARIO_CRONOGRAMA": 17,
+                "ID_CRONOGRAMA_ESTADO": 1,
+                "ID_USUARIO": 12,
+                "ESTADO_CRONOGRAMA_ESTADO": "EN PLANTA"
+            }
+        ]
+    }
+]

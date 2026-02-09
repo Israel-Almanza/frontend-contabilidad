@@ -1,0 +1,50 @@
+[
+    {
+        "ID_VENTAS_ACCESO": 23,
+        "NOMBRE": "Dashboard",
+        "NIVEL_SUPERIOR": 0,
+        "NUMERO_ORDEN": 1,
+        "TIPO" : "acceso",
+        "LINK": "dashboard/default"
+    },
+    {
+        "ID_VENTAS_ACCESO": 23,
+        "NOMBRE": "Pacientes",
+        "NIVEL_SUPERIOR": 0,
+        "NUMERO_ORDEN": 1,
+        "TIPO" : "acceso",
+        "LINK": "pacientes"
+    },
+    {
+        "ID_VENTAS_ACCESO": 23,
+        "NOMBRE": "Citas",
+        "NIVEL_SUPERIOR": 0,
+        "NUMERO_ORDEN": 1,
+        "TIPO" : "acceso",
+        "LINK": "citas"
+    },
+    {
+        "ID_VENTAS_ACCESO": 23,
+        "NOMBRE": "Facturas",
+        "NIVEL_SUPERIOR": 0,
+        "NUMERO_ORDEN": 1,
+        "TIPO" : "acceso",
+        "LINK": "facturas"
+    },
+    {
+        "ID_VENTAS_ACCESO": 64,
+        "NOMBRE": "Usuarios",
+        "NIVEL_SUPERIOR": 0,
+        "NUMERO_ORDEN": 6,
+        "TIPO" : "acceso",
+        "LINK": "acceso-usuarios-sistema-general"
+    },
+    {
+        "ID_VENTAS_ACCESO": 85,
+        "NOMBRE": "Perfiles",
+        "NIVEL_SUPERIOR": 0,
+        "NUMERO_ORDEN": 7,
+        "TIPO" : "acceso",
+        "LINK": "perfiles"
+    }
+]
