@@ -9,13 +9,13 @@ export const useNotifcacionesService = () => {
 
     const loadApiGetListNoficaciones = async () => {
 
-        try {
+        /* try {
             const respuesta = await AplicationConnect.post<any>('/notificaciones/getListNoficaciones')
             return respuesta.data
 
         } catch (error) {
             console.log(error)
-        }
+        } */
 
     }
 

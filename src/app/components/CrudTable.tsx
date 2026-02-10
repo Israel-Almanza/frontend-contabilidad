@@ -114,11 +114,11 @@ const CrudTable = ({ url = '', columns = [], RowComponent, footerSlot, HeaderAct
     setSelectedItem(null);
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async ({url}) => {
     // await fetch(`${url}/${id}`, { method: 'DELETE' });
-    console.log('id a eliminar ', id)
-    console.log('url---------> ', url)
-    await AplicationConnect.delete(`${url}/${id}`)
+    // console.log('id a eliminar ', id)
+    // console.log('url---------> ', url)
+    await AplicationConnect.delete(url)
     fetchData();
   };
 

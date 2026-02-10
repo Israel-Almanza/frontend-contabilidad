@@ -47,7 +47,7 @@ const Menu = () => {
           <EstadoButton estado={row?.estado} />
         </TableCell>
         <TableCell>
-          <IconButton onClick={() => btnDeleted(row)} color="secondary">
+          <IconButton onClick={() => eliminar({ url: `${url}/${row.id}` })} color="secondary">
             <DeleteIcon />
           </IconButton>
           <IconButton onClick={() => openModal(open, row.id)}
@@ -60,14 +60,16 @@ const Menu = () => {
 
   const openModal = async (open, id) => {
     // resetForm()
+    reset({});
     if (id) {
       const { datos } = await AplicationConnect.get(`/system/menus/${id}`)
-      reset({
+      /* reset({
         id: datos.id,
         nombre: datos.nombre,
         ruta: datos.ruta,
         icono: datos.icono,
-      });
+      }) */
+      reset(datos);
     }
     open()
   }
