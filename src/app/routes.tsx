@@ -61,7 +61,7 @@ import ReporteEgresoPage from '../pages/reporteIngresoEgresos/ReporteEgresoPage'
 import PacientePage from '../pages/paciente/PacientePage';
 import CitaPage from '../pages/cita/CitaPage';
 import FacturaPage from '../pages/factura/FacturaPage'
-import UsuarioPage from '../pages/usuarios/UsuarioPage';
+import MenuPage from '../pages/menus/MenuPage';
 //import materialRoutes from 'app/views/material-kit/MaterialRoutes';
 
 // session pages
@@ -93,7 +93,7 @@ const perfilesRoutes = [
 
   { path: '/perfiles', element: <PerfilPage /> },
   { path: '/pacientes', element: <PacientePage /> },
-  { path: '/usuarios', element: <UsuarioPage /> },
+  { path: '/menus', element: <MenuPage /> },
   { path: '/citas', element: <CitaPage /> },
   { path: '/facturas', element: <FacturaPage /> },
   { path: '/acceso-perfiles-ventas', element: <AccesoPerfilesVentaPage/> },

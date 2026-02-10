@@ -96,7 +96,7 @@ const CrudTable = ({ url = '', columns = [], RowComponent, footerSlot, HeaderAct
     }
     else {
       const response = await AplicationConnect.get<any>(`${url}?${queryParams}`)
-      const result = response.data.datos;
+      const result = response.datos;
 
       setData(result.rows);
       setTotalRows(result.count);

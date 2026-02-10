@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Box, styled, useTheme } from '@mui/material';
-import Usuario from '../../app/modules/usuarios/Usuario';
+import Menu from '../../app/modules/menus/Menu';
 
 const Container = styled('div')(({ theme }) => ({
     margin: '10px',
@@ -20,7 +20,7 @@ const Container = styled('div')(({ theme }) => ({
 const UsuarioPage = () => {
     return (
         <Container>
-            <Usuario />
+            <Menu />
         </Container>
     )
 }

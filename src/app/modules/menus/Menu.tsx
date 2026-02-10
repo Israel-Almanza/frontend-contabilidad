@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {
-  Typography, Button, Collapse, TableRow, colors, Input, Checkbox, IconButton,
+  Typography, Button, Collapse, TableRow, IconButton,
   TableCell, Grid, Container, Card, CardContent
 } from '@mui/material'
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import { MdOutlinePersonAddAlt1 } from "react-icons/md";
 import DeleteIcon from '@mui/icons-material/Delete';
 import CrudTable from '../../components/CrudTable';
 import EstadoButton from '../../components/EstadoButton';
@@ -12,15 +11,17 @@ import { FormMenu } from './components/FormMenu';
 import AplicationConnect from '../../../core/api/AplicationConnect';
 import { Controller, useForm } from "react-hook-form";
 import EditIcon from '@mui/icons-material/Edit';
+import ControlledButton from '../../components/ControlledButton';
 
-const Usuario = () => {
+const Menu = () => {
 
-  const { formState, handleSubmit, control, register, getValues, setValue, reset } = useForm();
+  const { handleSubmit, control, reset } = useForm();
 
   const columns = [
-    { id: 'nombre', label: 'Nombre' },
-    { id: 'ruta', label: 'Ruta' },
-    { id: 'icono', label: 'Icono' },
+    { value: 'nombre', label: 'Nombre' },
+    { value: 'ruta', label: 'Ruta' },
+    { value: 'icono', label: 'Icono' },
+    { value: 'estado', label: 'Estado' },
 
   ];
 
@@ -43,6 +44,9 @@ const Usuario = () => {
         <TableCell>{row.ruta}</TableCell>
         <TableCell>{row.icono}</TableCell>
         <TableCell>
+          <EstadoButton estado={row?.estado} />
+        </TableCell>
+        <TableCell>
           <IconButton onClick={() => btnDeleted(row)} color="secondary">
             <DeleteIcon />
           </IconButton>
@@ -57,12 +61,12 @@ const Usuario = () => {
   const openModal = async (open, id) => {
     // resetForm()
     if (id) {
-      const { data } = await AplicationConnect.get(`/system/menus/${id}`)
+      const { datos } = await AplicationConnect.get(`/system/menus/${id}`)
       reset({
-        id: data.datos.id,
-        nombre: data.datos.nombre,
-        ruta: data.datos.ruta,
-        icono: data.datos.icono,
+        id: datos.id,
+        nombre: datos.nombre,
+        ruta: datos.ruta,
+        icono: datos.icono,
       });
     }
     open()
@@ -92,9 +96,11 @@ const Usuario = () => {
 
   const HeaderActions = ({ open }) => {
     return (
-      <Button onClick={() => openModal(open, null)} variant="contained" color="primary">
+      <ControlledButton
+        onClick={() => openModal(open, null)} variant="contained" color="primary"
+      >
         Agregar
-      </Button>
+      </ControlledButton>
     );
   };
 
@@ -153,4 +159,4 @@ const Usuario = () => {
   )
 }
 
-export default Usuario
+export default Menu

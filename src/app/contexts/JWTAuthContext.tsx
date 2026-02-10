@@ -85,15 +85,10 @@ export const AuthProvider = ({ children }: any) => {
         "contrasena": password
       })
 
-      console.log("respuesta ", respuesta.data)
+      console.log("respuesta ", respuesta)
       // if (respuesta?.data?.status==true) {
       console.log('print menu ---> ', menu)
       
-        const dataUser = {
-          token: 'token12345',
-          usuario: 'tonyMontana',
-
-        }
         //const { token, usuario } = dataUser
         // const { token, usuario } = respuesta.data
         const usuario = {
@@ -111,7 +106,7 @@ export const AuthProvider = ({ children }: any) => {
           age: 25
         }
         //const tokens = "tokens12345"
-        setStorage('token', respuesta.data.datos.token, 7200)
+        setStorage('token', respuesta.datos.token, 7200)
         localStorage.setItem('user', JSON.stringify(user));
    
         //lamar a la api del mepnu 
