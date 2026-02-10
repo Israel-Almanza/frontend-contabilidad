@@ -62,6 +62,7 @@ import PacientePage from '../pages/paciente/PacientePage';
 import CitaPage from '../pages/cita/CitaPage';
 import FacturaPage from '../pages/factura/FacturaPage'
 import MenuPage from '../pages/menus/MenuPage';
+import ParametroPage from '../pages/parametros/ParametroPage';
 //import materialRoutes from 'app/views/material-kit/MaterialRoutes';
 
 // session pages
@@ -94,6 +95,7 @@ const perfilesRoutes = [
   { path: '/perfiles', element: <PerfilPage /> },
   { path: '/pacientes', element: <PacientePage /> },
   { path: '/menus', element: <MenuPage /> },
+   { path: '/parametros', element: <ParametroPage /> },
   { path: '/citas', element: <CitaPage /> },
   { path: '/facturas', element: <FacturaPage /> },
   { path: '/acceso-perfiles-ventas', element: <AccesoPerfilesVentaPage/> },
@@ -237,17 +239,6 @@ const pedidosRoutes = [
 { path: '/recepcion-SL/:idSucursal', element: <RecepcionPage /> },
 
   //añadienden las nuevas rutas revsion pedido
-
-  { path: '/apv-SJ/:idSucursal', element: <RevsionPedidioPage /> },
-  { path: '/apv-SS/:idSucursal', element: <RevsionPedidioPage /> },
-  { path: '/apv-CC/:idSucursal', element: <RevsionPedidioPage /> },
-  { path: '/apv-SP/:idSucursal', element: <RevsionPedidioPage /> },
-  { path: '/apv-SH/:idSucursal', element: <RevsionPedidioPage /> },
-  { path: '/apv-AE/:idSucursal', element: <RevsionPedidioPage /> },
-  { path: '/apv-AO/:idSucursal', element: <RevsionPedidioPage /> },
-  { path: '/apv-SL/:idSucursal', element: <RevsionPedidioPage /> },
-  { path: '/apv-prueba/:idSucursal', element: <RevsionPedidioPage /> },
-  { path: '/apv-prueba2/:idSucursal', element: <RevsionPedidioPage /> },
 
 
   { path: '/pedidos-consolidados', element: <PedidosConsolidadosPage /> },
