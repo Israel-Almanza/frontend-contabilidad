@@ -5,12 +5,10 @@ import {
 } from '@mui/material'
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { MdOutlinePersonAddAlt1 } from "react-icons/md";
-import { ModalAgregarPerfil } from './components/ModalNewPerfil';
 import DeleteIcon from '@mui/icons-material/Delete';
-import dataClientesJson from '../../../data/clinica/clientes.json'
 import CrudTable from '../../components/CrudTable';
 import EstadoButton from '../../components/EstadoButton';
-import { FormContact } from './components/FormContact';
+import { FormMenu } from './components/FormMenu';
 import AplicationConnect from '../../../core/api/AplicationConnect';
 import { Controller, useForm } from "react-hook-form";
 import EditIcon from '@mui/icons-material/Edit';
@@ -18,9 +16,6 @@ import EditIcon from '@mui/icons-material/Edit';
 const Usuario = () => {
 
   const { formState, handleSubmit, control, register, getValues, setValue, reset } = useForm();
-
-  const [originalRows, setoriginalRows] = useState<any>([])
-  const [listPerfil, setListPerfil] = useState<any>(originalRows)
 
   const columns = [
     { id: 'nombre', label: 'Nombre' },
@@ -30,8 +25,7 @@ const Usuario = () => {
   ];
 
   const filters = [
-    { label: 'Nombre', field: 'contacto', type: 'input' },
-    { label: 'Instancia', field: 'Nombre de Paciente', type: 'input' },
+    { label: 'Nombre', field: 'nombre', type: 'input' },
   ];
 
   const url = 'system/menus';
@@ -52,7 +46,7 @@ const Usuario = () => {
           <IconButton onClick={() => btnDeleted(row)} color="secondary">
             <DeleteIcon />
           </IconButton>
-          <IconButton onClick={() => open()}
+          <IconButton onClick={() => openModal(open, row.id)}
           ><EditIcon />
           </IconButton>
         </TableCell>
@@ -60,24 +54,47 @@ const Usuario = () => {
     );
   };
 
+  const openModal = async (open, id) => {
+    // resetForm()
+    if (id) {
+      const { data } = await AplicationConnect.get(`/system/menus/${id}`)
+      reset({
+        id: data.datos.id,
+        nombre: data.datos.nombre,
+        ruta: data.datos.ruta,
+        icono: data.datos.icono,
+      });
+    }
+    open()
+  }
+
   const FormComponent = ({ close, update }) => {
-    const guardar = async () => {
+    const guardar = async (model: any) => {
       if (model.id) {
-        await AplicationConnect.put<any>(`${url}/${model.id}`, getValues());
+        await AplicationConnect.put<any>(`${url}/${model.id}`, model);
       } else {
-        await AplicationConnect.post<any>(`${url}`, getValues());
+        await AplicationConnect.post<any>(`${url}`, model);
       }
       await update();
       close();
     };
 
     return (
-      <FormContact
+      <FormMenu
         handleSubmit={handleSubmit}
         control={control}
         guardar={guardar}
         cancelar={close}
       />
+    );
+  };
+
+
+  const HeaderActions = ({ open }) => {
+    return (
+      <Button onClick={() => openModal(open, null)} variant="contained" color="primary">
+        Agregar
+      </Button>
     );
   };
 
@@ -125,6 +142,7 @@ const Usuario = () => {
                   RowComponent={RowComponent}
                   FormComponent={FormComponent}
                   footerSlot={<div>Total de registros</div>}
+                  HeaderActions={HeaderActions}
                 />
               </Grid>
             </Grid>

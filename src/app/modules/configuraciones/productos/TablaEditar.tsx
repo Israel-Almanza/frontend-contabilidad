@@ -260,48 +260,6 @@ export default function TablaProductoEditar(props: any) {
     console.log("cantidad en tabla", idsSelect)
     console.log("cambio", resTamaño)
 
-    //const p = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
-
-    //console.log((state.base64URL).toString().replace('data:image/jpeg;base64,', ''));
-    /*try {
-      setLoading(true)
-      const response = await loadApiGuardarProducto(
-        nombreProducto, 
-        idSegundaCat,
-        detalle,
-        idUnidadMedida,
-        codEconomia,
-        codProducto,
-        (checkSi == true ? "1" : "0"),
-        precio,
-        resObj,
-        resTamaño,
-        imagen64
-      )
-      console.log("res aaa", response)
-      setLoading(false)
-      if (response?.status) {
-        //await loadBuscarReceta()
-        //pasarParametros()
-        AlertSave({ title: "", message: 'Se ha guardado Correctamente' });
- 
-      }
-      if (response?.status == false) {
-        AlertQuestion({ title: '', message: 'No Se ha guardado ' })
- 
- 
-      }
- 
-      if (response == undefined) {
-        AlertError({ title: '', message: 'No Se ha guardado ' })
-      }
-    
-    } catch (error) {
-      console.log("error api guardar:*", error)
-      setLoading(false)
-    }*/
-
-
   }
 
 

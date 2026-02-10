@@ -45,8 +45,8 @@ const tableStyling = {
 
 };
 
-const CrudTable = ({ url= '', columns= [], RowComponent, footerSlot,
-  FormComponent = null, filters = [], dataStatic = '' })  => {
+const CrudTable = ({ url = '', columns = [], RowComponent, footerSlot, HeaderActions,
+  FormComponent = null, filters = [], dataStatic = '' }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -93,8 +93,8 @@ const CrudTable = ({ url= '', columns= [], RowComponent, footerSlot,
       setData(dataCitasJson.rows);
       setTotalRows(dataCitasJson.count);
       setLoading(false);
-    } 
-      else {
+    }
+    else {
       const response = await AplicationConnect.get<any>(`${url}?${queryParams}`)
       const result = response.data.datos;
 
@@ -137,11 +137,10 @@ const CrudTable = ({ url= '', columns= [], RowComponent, footerSlot,
         <Button onClick={fetchData} startIcon={<RefreshIcon />}>
           Actualizar
         </Button>
-        {FormComponent !== null && (
-          <Button onClick={handleOpen} variant="contained" color="primary">
-            Agregar
-          </Button>
+        {HeaderActions && (
+          <HeaderActions open={handleOpen} />
         )}
+
 
         {/* Botón para mostrar los filtros */}
         <Button

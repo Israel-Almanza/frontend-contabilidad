@@ -15,7 +15,7 @@ const styleModal = {
 };
 
 
-export const FormContact = (props: any) => {
+export const FormMenu = (props: any) => {
     const { guardar, cancelar, handleSubmit, control } = props;
 
     return (
