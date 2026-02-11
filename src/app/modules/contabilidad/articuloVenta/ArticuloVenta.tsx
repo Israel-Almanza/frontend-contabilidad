@@ -5,23 +5,23 @@ import {
 } from '@mui/material'
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import DeleteIcon from '@mui/icons-material/Delete';
-import CrudTable from '../../components/CrudTable';
-import EstadoButton from '../../components/EstadoButton';
-import { FormMenu } from './components/FormMenu';
-import AplicationConnect from '../../../core/api/AplicationConnect';
+import CrudTable from '../../../components/CrudTable';
+import EstadoButton from '../../../components/EstadoButton';
+import { FormArticuloVenta } from './components/FormArticuloVenta';
+import AplicationConnect from '../../../../core/api/AplicationConnect';
 import { Controller, useForm } from "react-hook-form";
 import EditIcon from '@mui/icons-material/Edit';
-import ControlledButton from '../../components/ControlledButton';
+import ControlledButton from '../../../components/ControlledButton';
 
-const Menu = () => {
+const ArticuloVenta = () => {
 
   const { handleSubmit, control, reset } = useForm();
 
   const columns = [
-    { value: 'nombre', label: 'Nombre' },
-    { value: 'ruta', label: 'Ruta' },
-    { value: 'icono', label: 'Icono' },
-    { value: 'estado', label: 'Estado' },
+    { value: 'nombre', label: 'Nombre del artículo' },
+    { value: 'unidad', label: 'Tipo de Unidad' },
+    { value: 'impuesto', label: 'Impuesto' },
+    { value: 'precio', label: 'Tarifa' },
 
   ];
 
@@ -29,30 +29,42 @@ const Menu = () => {
     { label: 'Nombre', field: 'nombre', type: 'input' },
   ];
 
-  const url = 'system/menus';
+  const url = 'ctb/items';
 
   const RowComponent = ({ row, open, update, eliminar }) => {
-    const btnDeleted = async (item: any) => {
-      console.log('item ', item)
-      await eliminar(item.instancia.instance_key)
-      // instance_key
-    }
 
     return (
       <TableRow>
         <TableCell>{row.nombre}</TableCell>
-        <TableCell>{row.ruta}</TableCell>
-        <TableCell>{row.icono}</TableCell>
+        <TableCell>{row.unidad}</TableCell>
+        <TableCell>{row.impuesto}</TableCell>
+        <TableCell>{row.precio}</TableCell>
         <TableCell>
-          <EstadoButton estado={row?.estado} />
-        </TableCell>
-        <TableCell>
-          <IconButton onClick={() => eliminar({ url: `${url}/${row.id}` })} color="secondary">
-            <DeleteIcon />
+          <IconButton
+            onClick={() => eliminar({ url: `${url}/${row.id}` })}
+            sx={{
+              p: 0,
+              m: 0,
+              width: 24,
+              height: 20
+            }}
+          >
+            <DeleteIcon sx={{ fontSize: 18 }} />
           </IconButton>
-          <IconButton onClick={() => openModal(open, row.id)}
-          ><EditIcon />
+
+          <IconButton
+
+            onClick={() => openModal(open, row.id)}
+            sx={{
+              p: 0,
+              m: 0,
+              width: 24,
+              height: 20
+            }}
+          >
+            <EditIcon sx={{ fontSize: 18 }} />
           </IconButton>
+
         </TableCell>
       </TableRow>
     );
@@ -62,7 +74,7 @@ const Menu = () => {
     // resetForm()
     reset({});
     if (id) {
-      const { datos } = await AplicationConnect.get(`/system/menus/${id}`)
+      const { datos } = await AplicationConnect.get(`/${url}/${id}`)
       /* reset({
         id: datos.id,
         nombre: datos.nombre,
@@ -92,11 +104,11 @@ const Menu = () => {
     };
 
     return (
-      <FormMenu
+      <FormArticuloVenta
         handleSubmit={handleSubmit}
         control={control}
         guardar={guardar}
-        cancelar={handleClose }
+        cancelar={handleClose}
       />
     );
   };
@@ -168,4 +180,4 @@ const Menu = () => {
   )
 }
 
-export default Menu
+export default ArticuloVenta

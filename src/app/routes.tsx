@@ -63,6 +63,7 @@ import CitaPage from '../pages/cita/CitaPage';
 import FacturaPage from '../pages/factura/FacturaPage'
 import MenuPage from '../pages/menus/MenuPage';
 import ParametroPage from '../pages/parametros/ParametroPage';
+import ArticuloVentaPage from '../pages/contabilidad/articuloVenta/ArticuloVentaPage';
 //import materialRoutes from 'app/views/material-kit/MaterialRoutes';
 
 // session pages
@@ -92,14 +93,17 @@ const facturacionRoutes = [
 //perfiles
 const perfilesRoutes = [
 
+  { path: '/menus', element: <MenuPage /> },
+  { path: '/parametros', element: <ParametroPage /> },
+  { path: '/articulo-venta', element: <ArticuloVentaPage /> },
+
   { path: '/perfiles', element: <PerfilPage /> },
   { path: '/pacientes', element: <PacientePage /> },
-  { path: '/menus', element: <MenuPage /> },
-   { path: '/parametros', element: <ParametroPage /> },
+
   { path: '/citas', element: <CitaPage /> },
   { path: '/facturas', element: <FacturaPage /> },
-  { path: '/acceso-perfiles-ventas', element: <AccesoPerfilesVentaPage/> },
-  { path: '/acceso-perfiles', element: <AccesoPerfilesGeneralPage/> }
+  { path: '/acceso-perfiles-ventas', element: <AccesoPerfilesVentaPage /> },
+  { path: '/acceso-perfiles', element: <AccesoPerfilesGeneralPage /> }
   //{ path: '/perfiles/perfil', element: <PerfilPage /> },
 
 ];
@@ -169,18 +173,18 @@ const ventasRoutes = [
   /* { path: '/venta/ventas', element: <VentaPage /> },*/
   { path: '/VENTAS/:ITEM/:idSucursal', element: <VentaPage /> },
 
-   { path: '/capressocafe', element: <ReportesLinkPage /> },
-   { path: '/REPORTE_01_PANDO', element: <ReporteEgresoPage /> },
+  { path: '/capressocafe', element: <ReportesLinkPage /> },
+  { path: '/REPORTE_01_PANDO', element: <ReporteEgresoPage /> },
 
 ];
 //rutas demo 
 const pedidosRoutes = [
-  { path: '/existencia-SJ/:idSucursal', element: <InventarioCierrePage/> },
+  { path: '/existencia-SJ/:idSucursal', element: <InventarioCierrePage /> },
   { path: '/existencia-SS/:idSucursal', element: <InventarioCierrePage /> },
   { path: '/existencia-CC/:idSucursal', element: <InventarioCierrePage /> },
   { path: '/existencia-SP/:idSucursal', element: <InventarioCierrePage /> },
   { path: '/existencia-SH/:idSucursal', element: <InventarioCierrePage /> },
- 
+
   { path: '/existencia-AE/:idSucursal', element: <InventarioCierrePage /> },
   { path: '/existencia-AO/:idSucursal', element: <InventarioCierrePage /> },
   { path: '/existencia-SL/:idSucursal', element: <InventarioCierrePage /> },
@@ -215,28 +219,28 @@ const pedidosRoutes = [
   { path: '/solicitud-prueba2/:idSucursal', element: <SolicitudesPage /> },
 
   //añadienden las nuevas rutas entregas
-{ path: '/entrega-prueba/:idSucursal', element: <EntregasPage /> },
-{ path: '/entrega-prueba2/:idSucursal', element: <EntregasPage /> },
-{ path: '/entrega-SJ/:idSucursal', element: <EntregasPage /> },
-{ path: '/entrega-SS/:idSucursal', element: <EntregasPage /> },
-{ path: '/entrega-CC/:idSucursal', element: <EntregasPage /> },
-{ path: '/entrega-SP/:idSucursal', element: <EntregasPage /> },
-{ path: '/entrega-SH/:idSucursal', element: <EntregasPage /> },
-{ path: '/entrega-AE/:idSucursal', element: <EntregasPage /> },
-{ path: '/entrega-AO/:idSucursal', element: <EntregasPage /> },
-{ path: '/entrega-SL/:idSucursal', element: <EntregasPage /> },
+  { path: '/entrega-prueba/:idSucursal', element: <EntregasPage /> },
+  { path: '/entrega-prueba2/:idSucursal', element: <EntregasPage /> },
+  { path: '/entrega-SJ/:idSucursal', element: <EntregasPage /> },
+  { path: '/entrega-SS/:idSucursal', element: <EntregasPage /> },
+  { path: '/entrega-CC/:idSucursal', element: <EntregasPage /> },
+  { path: '/entrega-SP/:idSucursal', element: <EntregasPage /> },
+  { path: '/entrega-SH/:idSucursal', element: <EntregasPage /> },
+  { path: '/entrega-AE/:idSucursal', element: <EntregasPage /> },
+  { path: '/entrega-AO/:idSucursal', element: <EntregasPage /> },
+  { path: '/entrega-SL/:idSucursal', element: <EntregasPage /> },
 
-//añadienden las nuevas rutas recepcion
-{ path: '/recepcion-prueba/:idSucursal', element: <RecepcionPage /> },
-{ path: '/recepcion-prueba2/:idSucursal', element: <RecepcionPage /> },
-{ path: '/recepcion-SJ/:idSucursal', element: <RecepcionPage /> },
-{ path: '/recepcion-SS/:idSucursal', element: <RecepcionPage /> },
-{ path: '/recepcion-CC/:idSucursal', element: <RecepcionPage /> },
-{ path: '/recepcion-SP/:idSucursal', element: <RecepcionPage /> },
-{ path: '/recepcion-SH/:idSucursal', element: <RecepcionPage /> },
-{ path: '/recepcion-AE/:idSucursal', element: <RecepcionPage /> },
-{ path: '/recepcion-AO/:idSucursal', element: <RecepcionPage /> },
-{ path: '/recepcion-SL/:idSucursal', element: <RecepcionPage /> },
+  //añadienden las nuevas rutas recepcion
+  { path: '/recepcion-prueba/:idSucursal', element: <RecepcionPage /> },
+  { path: '/recepcion-prueba2/:idSucursal', element: <RecepcionPage /> },
+  { path: '/recepcion-SJ/:idSucursal', element: <RecepcionPage /> },
+  { path: '/recepcion-SS/:idSucursal', element: <RecepcionPage /> },
+  { path: '/recepcion-CC/:idSucursal', element: <RecepcionPage /> },
+  { path: '/recepcion-SP/:idSucursal', element: <RecepcionPage /> },
+  { path: '/recepcion-SH/:idSucursal', element: <RecepcionPage /> },
+  { path: '/recepcion-AE/:idSucursal', element: <RecepcionPage /> },
+  { path: '/recepcion-AO/:idSucursal', element: <RecepcionPage /> },
+  { path: '/recepcion-SL/:idSucursal', element: <RecepcionPage /> },
 
   //añadienden las nuevas rutas revsion pedido
 
@@ -254,7 +258,7 @@ const pedidosRoutes = [
   //planta->despacho
   { path: '/despacho', element: <DespachoPage /> },
   { path: '/nueva-empresa', element: <NewEmpresaPage /> }
-  
+
   /*
   { path: '/pedido/existencia-prueba', element: <InventarioCierrePage /> },
   { path: '/pedido/solicitud-prueba', element: <SolicitudesPage /> },
@@ -286,9 +290,9 @@ const testRoutes = [
   { path: '/registro-area', element: <PlantaAreaPage /> },
   { path: '/registro-proovedor', element: <PlantaProveedorPage /> },
   { path: '/registro-presentacion', element: <PlantaPresentacionPage /> },
-  
+
   { path: '/prueba', element: <ProductoInventarioPage /> },
- 
+
 
   //{ path: '/controlador-whatsapp', element: <ControladorWhatsappPage /> }
   { path: '/whatsapp', element: <ControladorWhatsappPage /> }
@@ -359,7 +363,7 @@ const routes = [
   { path: '/session/404', element: <NotFound /> },
   { path: '/session/signin', element: <Login /> },
   //{ path: '/session/signin', element: <JwtLogin /> },
- 
+
   { path: '/session/signup', element: <JwtRegister /> },
   { path: '/session/forgot-password', element: <ForgotPassword /> },
 

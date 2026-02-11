@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Box, styled, useTheme } from '@mui/material';
-import Menu from '../../app/modules/menus/Menu';
+import {styled} from '@mui/material';
+import ArticuloVenta from '../../../app/modules/contabilidad/articuloVenta/ArticuloVenta';
 
 const Container = styled('div')(({ theme }) => ({
     margin: '10px',
@@ -17,12 +17,12 @@ const Container = styled('div')(({ theme }) => ({
 }));
 
 
-const MenuPage = () => {
+const ArticuloVentaPage = () => {
     return (
         <Container>
-            <Menu />
+            <ArticuloVenta />
         </Container>
     )
 }
 
-export default MenuPage;
+export default ArticuloVentaPage;

@@ -114,7 +114,7 @@ const CrudTable = ({ url = '', columns = [], RowComponent, footerSlot, HeaderAct
     setSelectedItem(null);
   };
 
-  const handleDelete = async ({url}) => {
+  const handleDelete = async ({ url }) => {
     // await fetch(`${url}/${id}`, { method: 'DELETE' });
     // console.log('id a eliminar ', id)
     // console.log('url---------> ', url)
@@ -244,9 +244,15 @@ const CrudTable = ({ url = '', columns = [], RowComponent, footerSlot, HeaderAct
       />
 
       {FormComponent && (
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose} maxWidth={false}      // 🔥 elimina límites predefinidos
+          PaperProps={{
+            sx: {
+              width: 'auto',    // deja que el contenido mande
+            },
+          }}
+        >
           <DialogTitle>{selectedItem ? 'Editar' : 'Agregar'} Elemento</DialogTitle>
-          <DialogContent>
+          <DialogContent >
             <FormComponent close={handleClose} update={fetchData} />
           </DialogContent>
         </Dialog>
