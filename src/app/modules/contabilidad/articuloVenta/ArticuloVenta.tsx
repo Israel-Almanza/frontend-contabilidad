@@ -6,7 +6,6 @@ import {
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CrudTable from '../../../components/CrudTable';
-import EstadoButton from '../../../components/EstadoButton';
 import { FormArticuloVenta } from './components/FormArticuloVenta';
 import AplicationConnect from '../../../../core/api/AplicationConnect';
 import { Controller, useForm } from "react-hook-form";
@@ -128,32 +127,26 @@ const ArticuloVenta = () => {
   return (
     <>
       <div style={{
-        backgroundColor: '#DC3545', padding: '0.1%', display: 'flex', flexDirection: 'row',
-        justifyContent: 'flex-start', borderRadius: '5px', marginTop: '1%'
-        , alignItems: 'center', marginBottom: '5px'
+        backgroundColor: '#DC3545', display: 'flex', flexDirection: 'row',
+        justifyContent: 'flex-start', borderRadius: '5px'
+        , alignItems: 'center', marginBottom: '0px', marginTop: '0px'
 
       }}
       >
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
-          <Grid size={{ xs: 8, sm: 11, md: 11 }}>
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px', // espacio entre icono y texto
-                marginLeft: '10px',
-                marginTop: '5px',
-                color: 'white',
-              }}
-            >
-              <ManageAccountsIcon sx={{ color: 'white' }} />
-              Menus
-            </Typography>
-          </Grid>
-        </Grid>
-
+        <Typography
+          variant="subtitle1"
+          gutterBottom
+          sx={{
+            margin: 0,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px', // espacio entre icono y texto
+            marginLeft: '10px',
+            color: 'white',
+          }}
+        >
+          Artículos de compra
+        </Typography>
       </div>
       <Container>
         <Card>
