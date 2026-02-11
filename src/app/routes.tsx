@@ -1,17 +1,10 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import CrearRecetaPage from '../pages/crearreceta/CrearRecetaPage';
-//import EntregasPage from '../pages/pedidos/sucursales/entregas/EntregasPage';
-import EntregasPage from '../pages/pedidos/sucursales/entregas/EntregasPage';
-import InventarioCierrePage from '../pages/pedidos/sucursales/invetario-cierrre/InventarioCierrePage';
+
+
 import Login from '../pages/Login/Login';
-import PedidosConsolidadosPage from '../pages/pedidos-consolidados/PedidosConsolidadosPage';
-import PerfilPedidoPage from '../pages/pedidos/sucursales/perfil-pedido/PerfilPedidoPage';
-import RecepcionPage from '../pages/pedidos/sucursales/recepcion/RecepcionPage';
-import RecetaComboPage from '../pages/receta-combo/RecetaComboPage';
-import RevsionPedidioPage from '../pages/pedidos/sucursales/revision-pedido/RevsionPedidioPage';
-import SolicitudesPage from '../pages/pedidos/sucursales/solicitudes/SolicitudesPage';
-import VentaPage from '../pages/venta/VentaPage';
+
 import AuthGuard from './auth/AuthGuard';
 import { authRoles } from './auth/authRoles';
 
@@ -24,8 +17,7 @@ import CambiarPasswordPage from '../pages/seguridad/cambiar-password/CambiarPass
 import ResetPasswordPage from '../pages/seguridad/reset-password/ResetPasswordPage';
 import AccesoFormasPagoPage from '../pages/configuraciones/acceso-formas-pago/AccesoFormasPagoPage';
 import SucursalesConfigPage from '../pages/configuraciones/sucursales-config/SucursalesConfigPage';
-import ReporteCierreTurnoPage from '../pages/reporte-cierre-turno/ReporteCierreTurnoPage';
-import RepMovCajaPage from '../pages/rep-movimiento-caja/RepMovCajaPage';
+
 import PerfilPage from '../pages/perfiles/perfil/PerfilPage';
 import EventoSignificativoPage from '../pages/facturacion/evento-significativo/EventoSignificativoPage';
 import CuisPage from '../pages/facturacion/cuis/CuisPage';
@@ -33,37 +25,23 @@ import LlavePage from '../pages/facturacion/llave/LlavePage';
 import ProductoPage from '../pages/configuraciones/productos/ProductosPage';
 import AccesoUsuarioGeneralPage from '../pages/seguridad/acceso-usuario-general/AccesoUsuarioGeneralPage';
 import AccesoUsuarioVentaPage from '../pages/seguridad/acceso-usuario-venta/AccesoUsuarioVentaPage';
-import PedidosExtraordinariosPage from '../pages/pedidos/pedidos-extraordinarios/PedidosExtraordinariosPage';
-import PedidosExternosPage from '../pages/pedidos/pedidos-externos/PedidosExternosPage';
-import TransferenciaProductosPage from '../pages/pedidos/transferencia-productos/TransferenciaProductosPage';
-import CronogramaEntregaPage from '../pages/pedidos/cronograma-entrega/CronogramaEntregaPage';
-import DespachoPage from '../pages/pedidos/planta/despacho/DespachoPage';
 
-import PlantaRecepcionPage from '../pages/plata/PlantaRecepcionPage';
-import PlantaAreaPage from '../pages/plata/PlantaAreaPage';
-import PlantaPresentacionPage from '../pages/plata/PlantaPresentacionPage';
-import PlantaProveedorPage from '../pages/plata/PlantaProveedorPage';
-import PlantaProductoPage from '../pages/plata/PlantaProductoPage';
-import PlantaPedidosPage from '../pages/plata/PlantaPedidoPage';
+
 import ControladorWhatsappPage from '../pages/whatsapp-test/ControladorWhatsappPage';
 
 import AccesoPerfilesVentaPage from '../pages/perfiles/AccesoPerfilesVentaPage';
 import AccesoPerfilesGeneralPage from '../pages/perfiles/AccesoPerfilesGeneralPage';
 import CrearClientePage from '../pages/clientes/CrearClientePage';
 import UpdateClientePage from '../pages/clientes/UpdateClientePage';
-import ProductoInventarioPage from '../pages/productoInventario/ProductoInventarioPage';
 import ReportesLinkPage from '../pages/reporteslink/ReportesLinkPage';
-import ReporteEgresosPage from '../pages/reporteIngresoEgresos/ReporteEgresoPage';
-import ReporteIngresosPage from '../pages/reporteIngresoEgresos/ReporteIngresoPage';
-import ReporteUsuarioSucursalPage from '../pages/reporteIngresoEgresos/ReporteUsuarioSucursalPage';
-import NewEmpresaPage from '../pages/newEmpresa/NewEmpresaPage';
-import ReporteEgresoPage from '../pages/reporteIngresoEgresos/ReporteEgresoPage';
+
 import PacientePage from '../pages/paciente/PacientePage';
 import CitaPage from '../pages/cita/CitaPage';
 import FacturaPage from '../pages/factura/FacturaPage'
 import MenuPage from '../pages/menus/MenuPage';
 import ParametroPage from '../pages/parametros/ParametroPage';
-import ArticuloVentaPage from '../pages/contabilidad/articuloVenta/ArticuloVentaPage';
+import ArticuloVentaPage from '../pages/contabilidad/compras/articuloVenta/ArticuloVentaPage';
+import FacturaCompraPage from '../pages/contabilidad/compras/facturaCompra/FacturaCompraPage';
 //import materialRoutes from 'app/views/material-kit/MaterialRoutes';
 
 // session pages
@@ -96,6 +74,7 @@ const perfilesRoutes = [
   { path: '/menus', element: <MenuPage /> },
   { path: '/parametros', element: <ParametroPage /> },
   { path: '/articulo-venta', element: <ArticuloVentaPage /> },
+  { path: '/factura-compra', element: <FacturaCompraPage /> },
 
   { path: '/perfiles', element: <PerfilPage /> },
   { path: '/pacientes', element: <PacientePage /> },
@@ -110,19 +89,6 @@ const perfilesRoutes = [
 
 
 const reportesRoutes = [
-
-  { path: '/REP-CT-PANDO', element: <ReporteCierreTurnoPage /> },
-  { path: '/REP-CT-SALAMANCA', element: <ReporteCierreTurnoPage /> },
-  { path: '/REP-CT-AMERICA_OE', element: <ReporteCierreTurnoPage /> },
-  { path: '/REP-CT-HUPERMALL', element: <ReporteCierreTurnoPage /> },
-  { path: '/REP-CT-LINCOLN', element: <ReporteCierreTurnoPage /> },
-  { path: '/REP-CT-JORDAN', element: <ReporteCierreTurnoPage /> },
-  { path: '/REP-CT-AMERICA_E', element: <ReporteCierreTurnoPage /> },
-  { path: '/REP-CT-CENTER', element: <ReporteCierreTurnoPage /> },
-  { path: '/reportes/rep-movimiento-caja', element: <RepMovCajaPage /> },
-  { path: '/reportesEgreso', element: <ReporteEgresosPage /> },
-  { path: '/reportesIngreso', element: <ReporteIngresosPage /> },
-  { path: '/rep-usuario-sucursal', element: <ReporteUsuarioSucursalPage /> },
 
 
 ];
@@ -170,111 +136,17 @@ const seguridadRoutes = [
 ];
 
 const ventasRoutes = [
-  /* { path: '/venta/ventas', element: <VentaPage /> },*/
-  { path: '/VENTAS/:ITEM/:idSucursal', element: <VentaPage /> },
 
   { path: '/capressocafe', element: <ReportesLinkPage /> },
-  { path: '/REPORTE_01_PANDO', element: <ReporteEgresoPage /> },
 
 ];
 //rutas demo 
 const pedidosRoutes = [
-  { path: '/existencia-SJ/:idSucursal', element: <InventarioCierrePage /> },
-  { path: '/existencia-SS/:idSucursal', element: <InventarioCierrePage /> },
-  { path: '/existencia-CC/:idSucursal', element: <InventarioCierrePage /> },
-  { path: '/existencia-SP/:idSucursal', element: <InventarioCierrePage /> },
-  { path: '/existencia-SH/:idSucursal', element: <InventarioCierrePage /> },
-
-  { path: '/existencia-AE/:idSucursal', element: <InventarioCierrePage /> },
-  { path: '/existencia-AO/:idSucursal', element: <InventarioCierrePage /> },
-  { path: '/existencia-SL/:idSucursal', element: <InventarioCierrePage /> },
-  { path: '/existencia-prueba/:idSucursal', element: <InventarioCierrePage /> },
-  { path: '/existencia-prueba2/:idSucursal', element: <InventarioCierrePage /> },
-  { path: '/recepcion-prueba', element: <RecepcionPage /> },
-
-
-  { path: '/perfilPed-SJ/:idSucursal', element: <PerfilPedidoPage /> },
-  { path: '/perfilPed-SS/:idSucursal', element: <PerfilPedidoPage /> },
-  { path: '/perfilPed-CC/:idSucursal', element: <PerfilPedidoPage /> },
-  { path: '/perfilPed-SP/:idSucursal', element: <PerfilPedidoPage /> },
-  { path: '/perfilPed-SH/:idSucursal', element: <PerfilPedidoPage /> },
-
-  { path: '/perfilPed-AE/:idSucursal', element: <PerfilPedidoPage /> },
-  { path: '/perfilPed-AO/:idSucursal', element: <PerfilPedidoPage /> },
-  { path: '/perfilPed-SL/:idSucursal', element: <PerfilPedidoPage /> },
-
-  { path: '/perfilPed-prueba/:idSucursal', element: <PerfilPedidoPage /> },
-  { path: '/perfilPed-prueba2/:idSucursal', element: <PerfilPedidoPage /> },
-
-
-  { path: '/solicitud-SJ/:idSucursal', element: <SolicitudesPage /> },
-  { path: '/solicitud-SS/:idSucursal', element: <SolicitudesPage /> },
-  { path: '/solicitud-CC/:idSucursal', element: <SolicitudesPage /> },
-  { path: '/solicitud-SP/:idSucursal', element: <SolicitudesPage /> },
-  { path: '/solicitud-SH/:idSucursal', element: <SolicitudesPage /> },
-  { path: '/solicitud-AE/:idSucursal', element: <SolicitudesPage /> },
-  { path: '/solicitud-AO/:idSucursal', element: <SolicitudesPage /> },
-  { path: '/solicitud-SL/:idSucursal', element: <SolicitudesPage /> },
-  { path: '/solicitud-prueba/:idSucursal', element: <SolicitudesPage /> },
-  { path: '/solicitud-prueba2/:idSucursal', element: <SolicitudesPage /> },
-
-  //añadienden las nuevas rutas entregas
-  { path: '/entrega-prueba/:idSucursal', element: <EntregasPage /> },
-  { path: '/entrega-prueba2/:idSucursal', element: <EntregasPage /> },
-  { path: '/entrega-SJ/:idSucursal', element: <EntregasPage /> },
-  { path: '/entrega-SS/:idSucursal', element: <EntregasPage /> },
-  { path: '/entrega-CC/:idSucursal', element: <EntregasPage /> },
-  { path: '/entrega-SP/:idSucursal', element: <EntregasPage /> },
-  { path: '/entrega-SH/:idSucursal', element: <EntregasPage /> },
-  { path: '/entrega-AE/:idSucursal', element: <EntregasPage /> },
-  { path: '/entrega-AO/:idSucursal', element: <EntregasPage /> },
-  { path: '/entrega-SL/:idSucursal', element: <EntregasPage /> },
-
-  //añadienden las nuevas rutas recepcion
-  { path: '/recepcion-prueba/:idSucursal', element: <RecepcionPage /> },
-  { path: '/recepcion-prueba2/:idSucursal', element: <RecepcionPage /> },
-  { path: '/recepcion-SJ/:idSucursal', element: <RecepcionPage /> },
-  { path: '/recepcion-SS/:idSucursal', element: <RecepcionPage /> },
-  { path: '/recepcion-CC/:idSucursal', element: <RecepcionPage /> },
-  { path: '/recepcion-SP/:idSucursal', element: <RecepcionPage /> },
-  { path: '/recepcion-SH/:idSucursal', element: <RecepcionPage /> },
-  { path: '/recepcion-AE/:idSucursal', element: <RecepcionPage /> },
-  { path: '/recepcion-AO/:idSucursal', element: <RecepcionPage /> },
-  { path: '/recepcion-SL/:idSucursal', element: <RecepcionPage /> },
-
-  //añadienden las nuevas rutas revsion pedido
-
-
-  { path: '/pedidos-consolidados', element: <PedidosConsolidadosPage /> },
-
-  { path: '/entrega-prueba', element: <EntregasPage /> },
-
-  //new ,modulos 
-
-  { path: '/lista-pedidos-extraordinarios', element: <PedidosExtraordinariosPage /> },
-  { path: '/pedidos-externos', element: <PedidosExternosPage /> },
-  { path: '/transferencia-productos', element: <TransferenciaProductosPage /> },
-  { path: '/cronograma', element: <CronogramaEntregaPage /> },
-  //planta->despacho
-  { path: '/despacho', element: <DespachoPage /> },
-  { path: '/nueva-empresa', element: <NewEmpresaPage /> }
-
-  /*
-  { path: '/pedido/existencia-prueba', element: <InventarioCierrePage /> },
-  { path: '/pedido/solicitud-prueba', element: <SolicitudesPage /> },
-  { path: '/pedido/apv-prueba', element: <RevsionPedidioPage /> },
-  { path: '/pedido/recepcion', element: <RecepcionPage /> },
-  { path: '/pedido/perfil-pedido', element: <PerfilPedidoPage /> },
-
-  { path: '/pedido/pedidos-consolidados', element: <PedidosConsolidadosPage /> },
-  { path: '/pedido/entregas', element: <EntregasPage /> },*/
 
 ];
 
 // rutas recetas
 const recetasRoutes = [
-
-  { path: '/receta-combo', element: <RecetaComboPage /> },
   { path: '/receta', element: <CrearRecetaPage /> }
   //{ path: '/receta/receta-combo', element: <RecetaComboPage /> },
   // { path: '/receta/receta', element: <CrearRecetaPage /> }
@@ -283,15 +155,6 @@ const recetasRoutes = [
 
 const testRoutes = [
 
-  //{ path: '/planta-page', element: <PlantaPage /> },
-  { path: '/solicitud-pedido/', element: <PlantaPedidosPage /> },
-  { path: '/registro-recepcion/', element: <PlantaRecepcionPage /> },
-  { path: '/registro-producto', element: <PlantaProductoPage /> },
-  { path: '/registro-area', element: <PlantaAreaPage /> },
-  { path: '/registro-proovedor', element: <PlantaProveedorPage /> },
-  { path: '/registro-presentacion', element: <PlantaPresentacionPage /> },
-
-  { path: '/prueba', element: <ProductoInventarioPage /> },
 
 
   //{ path: '/controlador-whatsapp', element: <ControladorWhatsappPage /> }

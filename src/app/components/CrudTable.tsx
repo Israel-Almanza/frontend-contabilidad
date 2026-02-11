@@ -251,7 +251,7 @@ const CrudTable = ({ url = '', columns = [], RowComponent, footerSlot, HeaderAct
             },
           }}
         >
-          <DialogTitle>{selectedItem ? 'Editar' : 'Agregar'} Elemento</DialogTitle>
+          {/*<DialogTitle>{selectedItem ? 'Editar' : 'Agregar'} Elemento</DialogTitle>*/}
           <DialogContent >
             <FormComponent close={handleClose} update={fetchData} />
           </DialogContent>
