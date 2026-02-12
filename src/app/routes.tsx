@@ -16,18 +16,10 @@ import AccesoBotonSucursalPage from '../pages/seguridad/accesobotonSucursal/Acce
 import CambiarPasswordPage from '../pages/seguridad/cambiar-password/CambiarPasswordPage';
 import ResetPasswordPage from '../pages/seguridad/reset-password/ResetPasswordPage';
 
-import PerfilPage from '../pages/perfiles/perfil/PerfilPage';
 import EventoSignificativoPage from '../pages/facturacion/evento-significativo/EventoSignificativoPage';
 import CuisPage from '../pages/facturacion/cuis/CuisPage';
 import LlavePage from '../pages/facturacion/llave/LlavePage';
-import AccesoUsuarioGeneralPage from '../pages/seguridad/acceso-usuario-general/AccesoUsuarioGeneralPage';
-import AccesoUsuarioVentaPage from '../pages/seguridad/acceso-usuario-venta/AccesoUsuarioVentaPage';
 
-
-import ControladorWhatsappPage from '../pages/whatsapp-test/ControladorWhatsappPage';
-
-import AccesoPerfilesVentaPage from '../pages/perfiles/AccesoPerfilesVentaPage';
-import AccesoPerfilesGeneralPage from '../pages/perfiles/AccesoPerfilesGeneralPage';
 import CrearClientePage from '../pages/clientes/CrearClientePage';
 import UpdateClientePage from '../pages/clientes/UpdateClientePage';
 import ReportesLinkPage from '../pages/reporteslink/ReportesLinkPage';
@@ -40,6 +32,7 @@ import ParametroPage from '../pages/parametros/ParametroPage';
 import ArticuloVentaPage from '../pages/contabilidad/compras/articuloVenta/ArticuloVentaPage';
 import FacturaCompraPage from '../pages/contabilidad/compras/facturaCompra/FacturaCompraPage';
 import PermisoPage from '../pages/permisos/PermisoPage';
+import RolPage from '../pages/roles/RolPage';
 //import materialRoutes from 'app/views/material-kit/MaterialRoutes';
 
 // session pages
@@ -72,17 +65,15 @@ const perfilesRoutes = [
   { path: '/menus', element: <MenuPage /> },
   { path: '/parametros', element: <ParametroPage /> },
   { path: '/permisos', element: <PermisoPage /> },
+  { path: '/roles', element: <RolPage /> },
 
   { path: '/articulo-venta', element: <ArticuloVentaPage /> },
   { path: '/factura-compra', element: <FacturaCompraPage /> },
 
-  { path: '/perfiles', element: <PerfilPage /> },
   { path: '/pacientes', element: <PacientePage /> },
 
   { path: '/citas', element: <CitaPage /> },
   { path: '/facturas', element: <FacturaPage /> },
-  { path: '/acceso-perfiles-ventas', element: <AccesoPerfilesVentaPage /> },
-  { path: '/acceso-perfiles', element: <AccesoPerfilesGeneralPage /> }
   //{ path: '/perfiles/perfil', element: <PerfilPage /> },
 
 ];
@@ -94,8 +85,6 @@ const seguridadRoutes = [
   { path: '/permisos-boton-sucursal', element: <AccesoBotonSucursalPage /> },
   { path: '/cambiar-pasword', element: <CambiarPasswordPage /> },
   { path: '/reset-pasword', element: <ResetPasswordPage /> },
-  { path: '/acceso-usuarios-sistema-general', element: <AccesoUsuarioGeneralPage /> },
-  { path: '/acceso-usuarios-sistema-ventas', element: <AccesoUsuarioVentaPage /> }
 
   /*
   { path: '/seguridad/acceso-boton', element: <AccesoBotonPage /> },
@@ -126,11 +115,6 @@ const recetasRoutes = [
 ];
 
 const testRoutes = [
-
-
-
-  //{ path: '/controlador-whatsapp', element: <ControladorWhatsappPage /> }
-  { path: '/whatsapp', element: <ControladorWhatsappPage /> }
 
 ];
 

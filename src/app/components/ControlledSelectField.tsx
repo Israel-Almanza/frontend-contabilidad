@@ -10,9 +10,10 @@ const ControlledSelectField = ({
     { ID: "1", TEXT: "HABILITADO" },
     { ID: "0", TEXT: "INABILITADO" },
   ],
-  valueField = "ID",   // <-- campo que se usará como value
-  labelField = "TEXT", // <-- campo que se usará como texto
+  valueField = "ID",
+  labelField = "TEXT",
   readOnly = false,
+  multiple = false,
   ...rest
 }: any) => {
   const selectOptions = options || defaultOptions;
@@ -27,18 +28,30 @@ const ControlledSelectField = ({
           message: "Completa este campo",
         },
       }}
-      render={({ field: { onChange, value }, fieldState: { error } }) => (
+      render={({
+        field: { onChange, value },
+        fieldState: { error },
+      }) => (
         <TextField
           select
           label={label}
           fullWidth
           size="small"
           variant="outlined"
-          value={value || ""}
-          onChange={onChange}
+          value={value || (multiple ? [] : "")}
+          onChange={(event) => {
+            if (multiple) {
+              onChange(event.target.value);
+            } else {
+              onChange(event.target.value);
+            }
+          }}
           error={!!error}
           helperText={error ? error.message : null}
           InputProps={{ readOnly }}
+          SelectProps={{
+            multiple,
+          }}
           {...rest}
         >
           {selectOptions.map((option: any) => (
