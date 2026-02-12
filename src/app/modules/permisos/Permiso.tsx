@@ -3,24 +3,26 @@ import {
   Typography, Button, Collapse, TableRow, IconButton,
   TableCell, Grid, Container, Card, CardContent
 } from '@mui/material'
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CrudTable from '../../components/CrudTable';
 import EstadoButton from '../../components/EstadoButton';
-import { FormMenu } from './components/FormMenu';
+import { FormPermiso } from './components/FormPermiso';
 import AplicationConnect from '../../../core/api/AplicationConnect';
 import { Controller, useForm } from "react-hook-form";
 import EditIcon from '@mui/icons-material/Edit';
 import ControlledButton from '../../components/ControlledButton';
 
-const Menu = () => {
+const Permiso = () => {
 
   const { handleSubmit, control, reset } = useForm();
 
+  const [tituloFormulario, setTituloFormulario] = useState('');
+
+
   const columns = [
     { value: 'nombre', label: 'Nombre' },
-    { value: 'ruta', label: 'Ruta' },
-    { value: 'icono', label: 'Icono' },
+    { value: 'grupo', label: 'Grupo' },
+    { value: 'descripcion', label: 'Descripcion' },
     { value: 'estado', label: 'Estado' },
 
   ];
@@ -29,15 +31,14 @@ const Menu = () => {
     { label: 'Nombre', field: 'nombre', type: 'input' },
   ];
 
-  const url = 'system/menus';
+  const url = 'system/permisos';
 
   const RowComponent = ({ row, open, update, eliminar }) => {
-
     return (
       <TableRow>
         <TableCell>{row.nombre}</TableCell>
-        <TableCell>{row.ruta}</TableCell>
-        <TableCell>{row.icono}</TableCell>
+        <TableCell>{row.grupo}</TableCell>
+        <TableCell>{row.descripcion}</TableCell>
         <TableCell>
           <EstadoButton estado={row?.estado} />
         </TableCell>
@@ -55,9 +56,11 @@ const Menu = () => {
 
   const openModal = async (open, id) => {
     // resetForm()
+    setTituloFormulario('Agregar Permiso')
     reset({});
     if (id) {
-      const { datos } = await AplicationConnect.get(`/system/menus/${id}`)
+      setTituloFormulario('Editar Permiso')
+      const { datos } = await AplicationConnect.get(`/${url}/${id}`)
       /* reset({
         id: datos.id,
         nombre: datos.nombre,
@@ -80,18 +83,13 @@ const Menu = () => {
       close();
     };
 
-
-    const handleClose = () => {
-      reset({});        // 👈 limpiar siempre
-      close();
-    };
-
     return (
-      <FormMenu
+      <FormPermiso
         handleSubmit={handleSubmit}
         control={control}
         guardar={guardar}
-        cancelar={handleClose }
+        cancelar={close}
+        tituloFormulario={tituloFormulario}
       />
     );
   };
@@ -117,25 +115,28 @@ const Menu = () => {
 
       }}
       >
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
-          <Grid size={{ xs: 8, sm: 11, md: 11 }}>
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px', // espacio entre icono y texto
-                marginLeft: '10px',
-                marginTop: '5px',
-                color: 'white',
-              }}
-            >
-              <ManageAccountsIcon sx={{ color: 'white' }} />
-              Menus
-            </Typography>
-          </Grid>
-        </Grid>
+        <div style={{
+          backgroundColor: '#DC3545', display: 'flex', flexDirection: 'row',
+          justifyContent: 'flex-start', borderRadius: '5px'
+          , alignItems: 'center', marginBottom: '0px', marginTop: '0px'
+
+        }}
+        >
+          <Typography
+            variant="subtitle1"
+            gutterBottom
+            sx={{
+              margin: 0,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px', // espacio entre icono y texto
+              marginLeft: '10px',
+              color: 'white',
+            }}
+          >
+            Permisos
+          </Typography>
+        </div>
 
       </div>
       <Container>
@@ -146,7 +147,6 @@ const Menu = () => {
               >
                 <CrudTable
                   url={url}
-                  order="'createdAt'"
                   filters={filters}
                   columns={columns}
                   RowComponent={RowComponent}
@@ -163,4 +163,4 @@ const Menu = () => {
   )
 }
 
-export default Menu
+export default Permiso

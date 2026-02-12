@@ -15,14 +15,11 @@ import AccesoBotonPage from '../pages/seguridad/accesoboton/AccesoBotonPage';
 import AccesoBotonSucursalPage from '../pages/seguridad/accesobotonSucursal/AccesoBotonSucursalPage';
 import CambiarPasswordPage from '../pages/seguridad/cambiar-password/CambiarPasswordPage';
 import ResetPasswordPage from '../pages/seguridad/reset-password/ResetPasswordPage';
-import AccesoFormasPagoPage from '../pages/configuraciones/acceso-formas-pago/AccesoFormasPagoPage';
-import SucursalesConfigPage from '../pages/configuraciones/sucursales-config/SucursalesConfigPage';
 
 import PerfilPage from '../pages/perfiles/perfil/PerfilPage';
 import EventoSignificativoPage from '../pages/facturacion/evento-significativo/EventoSignificativoPage';
 import CuisPage from '../pages/facturacion/cuis/CuisPage';
 import LlavePage from '../pages/facturacion/llave/LlavePage';
-import ProductoPage from '../pages/configuraciones/productos/ProductosPage';
 import AccesoUsuarioGeneralPage from '../pages/seguridad/acceso-usuario-general/AccesoUsuarioGeneralPage';
 import AccesoUsuarioVentaPage from '../pages/seguridad/acceso-usuario-venta/AccesoUsuarioVentaPage';
 
@@ -42,6 +39,7 @@ import MenuPage from '../pages/menus/MenuPage';
 import ParametroPage from '../pages/parametros/ParametroPage';
 import ArticuloVentaPage from '../pages/contabilidad/compras/articuloVenta/ArticuloVentaPage';
 import FacturaCompraPage from '../pages/contabilidad/compras/facturaCompra/FacturaCompraPage';
+import PermisoPage from '../pages/permisos/PermisoPage';
 //import materialRoutes from 'app/views/material-kit/MaterialRoutes';
 
 // session pages
@@ -73,6 +71,8 @@ const perfilesRoutes = [
 
   { path: '/menus', element: <MenuPage /> },
   { path: '/parametros', element: <ParametroPage /> },
+  { path: '/permisos', element: <PermisoPage /> },
+
   { path: '/articulo-venta', element: <ArticuloVentaPage /> },
   { path: '/factura-compra', element: <FacturaCompraPage /> },
 
@@ -84,34 +84,6 @@ const perfilesRoutes = [
   { path: '/acceso-perfiles-ventas', element: <AccesoPerfilesVentaPage /> },
   { path: '/acceso-perfiles', element: <AccesoPerfilesGeneralPage /> }
   //{ path: '/perfiles/perfil', element: <PerfilPage /> },
-
-];
-
-
-const reportesRoutes = [
-
-
-];
-//usuarios 
-
-const usuariosRoutes = [
-  // { path: '/usuarios/borrar-usuario', element: <BorrarUsuarioPage /> },
-
-
-
-];
-
-//configuraciones
-
-const configuracionesRoutes = [
-  //sucursal-formas-pago
-  { path: '/sucursal-formas-pago', element: <AccesoFormasPagoPage /> },
-  //{ path: '/config/acceso-formas-pago', element: <AccesoFormasPagoPage /> },
-  //  { path: '/config/sucursales-config', element: <SucursalesConfigPage /> },
-  { path: '/config-sucursales', element: <SucursalesConfigPage /> },
-  //{ path: '/config/productos', element: <ProductoPage /> }
-  { path: '/CONF-PRODUCTS', element: <ProductoPage /> }
-  //
 
 ];
 
@@ -191,11 +163,6 @@ const routes = [
       //reportes
       ...perfilesRoutes,
       //reportes
-      ...reportesRoutes,
-      //usuarios
-      ...usuariosRoutes,
-      //configuraciones
-      ...configuracionesRoutes,
       //seguridad
       ...seguridadRoutes,
       //ventas

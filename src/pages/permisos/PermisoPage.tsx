@@ -1,7 +1,7 @@
 import React from 'react'
-import Producto from '../../../app/modules/configuraciones/productos/Productos';
-import { Box, styled, useTheme } from '@mui/material';
 
+import { Box, styled, useTheme } from '@mui/material';
+import Permiso from '../../app/modules/permisos/Permiso';
 
 const Container = styled('div')(({ theme }) => ({
     margin: '10px',
@@ -17,12 +17,12 @@ const Container = styled('div')(({ theme }) => ({
 }));
 
 
-const ProductoPage = () => {
+const PermisoPage = () => {
     return (
         <Container>
-            <Producto />
+            <Permiso />
         </Container>
     )
 }
 
-export default ProductoPage;
+export default PermisoPage;

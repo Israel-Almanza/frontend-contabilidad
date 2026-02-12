@@ -17,6 +17,9 @@ const Menu = () => {
 
   const { handleSubmit, control, reset } = useForm();
 
+  const [tituloFormulario, setTituloFormulario] = useState('');
+ 
+
   const columns = [
     { value: 'nombre', label: 'Nombre' },
     { value: 'grupo', label: 'Grupo' },
@@ -54,8 +57,10 @@ const Menu = () => {
 
   const openModal = async (open, id) => {
     // resetForm()
+    setTituloFormulario('Agregar Parametro')
     reset({});
     if (id) {
+      setTituloFormulario('Editar Parametro')
       const { datos } = await AplicationConnect.get(`/${url}/${id}`)
       /* reset({
         id: datos.id,
@@ -85,6 +90,7 @@ const Menu = () => {
         control={control}
         guardar={guardar}
         cancelar={close}
+        tituloFormulario = {tituloFormulario}
       />
     );
   };

@@ -1,9 +1,7 @@
 import { Typography, Button, Divider } from '@mui/material'
-import React from 'react'
-import { Controller } from "react-hook-form";
 import Box from '@mui/material/Box';
-import InputTextFieldCustomNormal from '../../../components/ControlledTextField';
-import InputDateFieldCustomNormal from '../../../components/ControlledDateField';
+import ControlledTextField from '../../../components/ControlledTextField';
+import ControlledSelectField from '../../../components/ControlledSelectField';
 
 const styleModal = {
     display: 'flex',
@@ -15,7 +13,7 @@ const styleModal = {
 };
 
 
-export const FormParametro = (props: any) => {
+export const FormPermiso = (props: any) => {
     const { guardar, cancelar, handleSubmit, control, tituloFormulario = '' } = props;
 
     return (
@@ -33,32 +31,30 @@ export const FormParametro = (props: any) => {
                 <Typography variant="h6">{tituloFormulario}</Typography>
             </Box>
 
-            <InputTextFieldCustomNormal
+            <ControlledSelectField
+                label="Tipo"
+                nameRegister="tipo"
+                control={control}
+                options={[
+                    { label: 'SISTEMA', value: 'SISTEMA' },
+                    { label: 'INTEROPERABILIDAD', value: 'INTEROPERABILIDAD' },
+                ]}
+                valueField="value"
+                labelField="label"
+            />
+
+            <ControlledTextField
                 label="Nombre"
                 control={control}
-                isRequired={true}
+                isRequired={false}
                 nameRegister="nombre"
             />
 
-            <InputTextFieldCustomNormal
-                label="Grupo"
-                control={control}
-                isRequired={false}
-                nameRegister="grupo"
-            />
-
-            <InputTextFieldCustomNormal
+            <ControlledTextField
                 label="Descripcion"
                 control={control}
                 isRequired={true}
                 nameRegister="descripcion"
-            />
-
-            <InputTextFieldCustomNormal
-                label="Codigio"
-                control={control}
-                isRequired={true}
-                nameRegister="codigo"
             />
 
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
