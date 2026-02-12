@@ -20,7 +20,7 @@ const Usuario = () => {
 
 
   const columns = [
-    { value: 'nombre', label: 'Nombre' },
+    { value: 'usuario', label: 'Usuario' },
     { value: 'descripcion', label: 'Descripcion' },
     { value: 'menu', label: 'Menus' },
     { value: 'estado', label: 'Estado' },
@@ -31,12 +31,12 @@ const Usuario = () => {
     { label: 'Nombre', field: 'nombre', type: 'input' },
   ];
 
-  const url = 'system/roles';
+  const url = 'system/usuarios';
 
   const RowComponent = ({ row, open, update, eliminar }) => {
     return (
       <TableRow>
-        <TableCell>{row.nombre}</TableCell>
+        <TableCell>{row.usuario}</TableCell>
         <TableCell>{row.descripcion}</TableCell>
         <TableCell>
           <ul style={{ margin: 0, paddingLeft: 16 }}>
@@ -62,15 +62,15 @@ const Usuario = () => {
 
   const openModal = async (open, id) => {
     // resetForm()
-    setTituloFormulario('Agregar Rol')
+    setTituloFormulario('Agregar Usuario')
     reset({});
     if (id) {
-      setTituloFormulario('Editar Rol')
+      setTituloFormulario('Editar Usuario')
       const { datos } = await AplicationConnect.get(`/${url}/${id}`)
-      // 🔥 TRANSFORMAR menus → solo IDs
+      // 🔥 TRANSFORMAR roles → solo IDs
       const formatted = {
         ...datos,
-        menus: datos.menus?.map(m => m.id) || []
+        roles: datos.roles?.map(m => m.id) || []
       }
 
       reset(formatted);
@@ -141,7 +141,7 @@ const Usuario = () => {
               color: 'white',
             }}
           >
-            Roles
+            Usuarios
           </Typography>
         </div>
 

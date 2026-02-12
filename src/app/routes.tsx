@@ -82,16 +82,7 @@ const seguridadRoutes = [
   { path: '/permisos-boton', element: <AccesoBotonPage /> },
   { path: '/permisos-boton-sucursal', element: <AccesoBotonSucursalPage /> },
   { path: '/cambiar-pasword', element: <CambiarPasswordPage /> },
-  { path: '/reset-pasword', element: <ResetPasswordPage /> },
-
-  /*
-  { path: '/seguridad/acceso-boton', element: <AccesoBotonPage /> },
-  { path: '/seguridad/acceso-boton-sucursal', element: <AccesoBotonSucursalPage /> },
-  { path: '/seguridad/cambiar-password', element: <CambiarPasswordPage /> },
-  { path: '/seguridad/reset-password', element: <ResetPasswordPage /> },
-  { path: '/seguridad/acceso-usuarios-general', element: <AccesoUsuarioGeneralPage /> },
-  { path: '/seguridad/acceso-usuarios-venta', element: <AccesoUsuarioVentaPage /> },*/
-
+  { path: '/reset-pasword', element: <ResetPasswordPage /> }
 ];
 
 const ventasRoutes = [
