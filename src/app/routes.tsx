@@ -1,7 +1,5 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
-import CrearRecetaPage from '../pages/crearreceta/CrearRecetaPage';
-
 
 import Login from '../pages/Login/Login';
 
@@ -19,9 +17,6 @@ import ResetPasswordPage from '../pages/seguridad/reset-password/ResetPasswordPa
 import EventoSignificativoPage from '../pages/facturacion/evento-significativo/EventoSignificativoPage';
 import CuisPage from '../pages/facturacion/cuis/CuisPage';
 import LlavePage from '../pages/facturacion/llave/LlavePage';
-
-import CrearClientePage from '../pages/clientes/CrearClientePage';
-import UpdateClientePage from '../pages/clientes/UpdateClientePage';
 import ReportesLinkPage from '../pages/reporteslink/ReportesLinkPage';
 
 import PacientePage from '../pages/paciente/PacientePage';
@@ -33,6 +28,7 @@ import ArticuloVentaPage from '../pages/contabilidad/compras/articuloVenta/Artic
 import FacturaCompraPage from '../pages/contabilidad/compras/facturaCompra/FacturaCompraPage';
 import PermisoPage from '../pages/permisos/PermisoPage';
 import RolPage from '../pages/roles/RolPage';
+import UsuarioPage from '../pages/usuario/UsuarioPage';
 //import materialRoutes from 'app/views/material-kit/MaterialRoutes';
 
 // session pages
@@ -66,6 +62,8 @@ const perfilesRoutes = [
   { path: '/parametros', element: <ParametroPage /> },
   { path: '/permisos', element: <PermisoPage /> },
   { path: '/roles', element: <RolPage /> },
+  { path: '/usuarios', element: <UsuarioPage /> },
+
 
   { path: '/articulo-venta', element: <ArticuloVentaPage /> },
   { path: '/factura-compra', element: <FacturaCompraPage /> },
@@ -101,26 +99,12 @@ const ventasRoutes = [
   { path: '/capressocafe', element: <ReportesLinkPage /> },
 
 ];
-//rutas demo 
-const pedidosRoutes = [
-
-];
 
 // rutas recetas
 const recetasRoutes = [
-  { path: '/receta', element: <CrearRecetaPage /> }
   //{ path: '/receta/receta-combo', element: <RecetaComboPage /> },
   // { path: '/receta/receta', element: <CrearRecetaPage /> }
 
-];
-
-const testRoutes = [
-
-];
-
-const clienteRoutes = [
-  { path: '/cliente-capresso', element: <CrearClientePage /> },
-  { path: '/actualizar-cliente-capresso', element: <UpdateClientePage /> },
 ];
 
 
@@ -138,10 +122,6 @@ const routes = [
     ),
     children: [
 
-      //test plata 
-      ...testRoutes,
-      //clientes
-      ...clienteRoutes,
       //reportes
       ...facturacionRoutes,
       //reportes
@@ -152,7 +132,6 @@ const routes = [
       //ventas
       ...ventasRoutes,
       //pedidos
-      ...pedidosRoutes,
       //recetas
       ...recetasRoutes,
       //materialRoutes
