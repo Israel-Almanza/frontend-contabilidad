@@ -9,15 +9,7 @@ import { authRoles } from './auth/authRoles';
 import Loadable from './components/Loadable';
 import MatxLayout from './components/MatxLayout/MatxLayout';
 import materialRoutes from './views/material-kit/MaterialRoutes';
-import AccesoBotonPage from '../pages/seguridad/accesoboton/AccesoBotonPage';
-import AccesoBotonSucursalPage from '../pages/seguridad/accesobotonSucursal/AccesoBotonSucursalPage';
-import CambiarPasswordPage from '../pages/seguridad/cambiar-password/CambiarPasswordPage';
-import ResetPasswordPage from '../pages/seguridad/reset-password/ResetPasswordPage';
 
-import EventoSignificativoPage from '../pages/facturacion/evento-significativo/EventoSignificativoPage';
-import CuisPage from '../pages/facturacion/cuis/CuisPage';
-import LlavePage from '../pages/facturacion/llave/LlavePage';
-import ReportesLinkPage from '../pages/reporteslink/ReportesLinkPage';
 
 import PacientePage from '../pages/paciente/PacientePage';
 import CitaPage from '../pages/cita/CitaPage';
@@ -46,14 +38,6 @@ const Analytics = Loadable(lazy(() => import('./views/dashboard/Analytics')));
 
 
 //facturacion
-const facturacionRoutes = [
-
-  { path: '/llave', element: < LlavePage /> },
-  { path: '/cuis', element: <CuisPage /> },
-  { path: '/evento-significativo', element: < EventoSignificativoPage /> },
-
-
-];
 
 //perfiles
 const perfilesRoutes = [
@@ -78,25 +62,7 @@ const perfilesRoutes = [
 
 //seguridad
 
-const seguridadRoutes = [
-  { path: '/permisos-boton', element: <AccesoBotonPage /> },
-  { path: '/permisos-boton-sucursal', element: <AccesoBotonSucursalPage /> },
-  { path: '/cambiar-pasword', element: <CambiarPasswordPage /> },
-  { path: '/reset-pasword', element: <ResetPasswordPage /> }
-];
 
-const ventasRoutes = [
-
-  { path: '/capressocafe', element: <ReportesLinkPage /> },
-
-];
-
-// rutas recetas
-const recetasRoutes = [
-  //{ path: '/receta/receta-combo', element: <RecetaComboPage /> },
-  // { path: '/receta/receta', element: <CrearRecetaPage /> }
-
-];
 
 
 
@@ -114,17 +80,13 @@ const routes = [
     children: [
 
       //reportes
-      ...facturacionRoutes,
       //reportes
       ...perfilesRoutes,
       //reportes
       //seguridad
-      ...seguridadRoutes,
       //ventas
-      ...ventasRoutes,
       //pedidos
       //recetas
-      ...recetasRoutes,
       //materialRoutes
       ...materialRoutes,
       // dashboard route
