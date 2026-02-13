@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }: any) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const login = async (email: any, password: any) => {
- 
+
     try {
       const respuesta = await AplicationConnect.post<any>('/auth/login', {
         "usuario": email,
@@ -88,49 +88,56 @@ export const AuthProvider = ({ children }: any) => {
       console.log("respuesta ", respuesta)
       // if (respuesta?.data?.status==true) {
       console.log('print menu ---> ', menu)
-      
-        //const { token, usuario } = dataUser
-        // const { token, usuario } = respuesta.data
-        const usuario = {
-          NOMBRE_COMPLETO: 'PEDRO SILVA',
-          SEXO: 'M'
-        }
-        const user = {
-          id: 10,
-          role: 'SA',
-          name: email,
-          username: email,
-          //email:email,
-          email: usuario.NOMBRE_COMPLETO,
-          avatar: (usuario.SEXO == "M" ? 'https://i.pinimg.com/736x/63/fe/b7/63feb78e24de8202c21eb36d990f0155.jpg' : 'https://i.pinimg.com/736x/63/fe/b7/63feb78e24de8202c21eb36d990f0155.jpg' ),
-          age: 25
-        }
-        //const tokens = "tokens12345"
-        setStorage('token', respuesta.datos.token, 7200)
-        localStorage.setItem('user', JSON.stringify(user));
-   
-        //lamar a la api del mepnu 
-        // const responseMenu = await AplicationConnect.get('/menu')
-        // console.log("response a Menu ", responseMenu.data)
 
-        // console.log("resposne data menu length ", responseMenu.data.length)
-        //formatear api  de menu token 
-        // if (responseMenu.data.length > 0) {
+      //const { token, usuario } = dataUser
+      // const { token, usuario } = respuesta.data
+      const usuario = {
+        NOMBRE_COMPLETO: 'PEDRO SILVA',
+        SEXO: 'M'
+      }
+      const user = {
+        id: 10,
+        role: 'SA',
+        name: email,
+        username: email,
+        //email:email,
+        email: usuario.NOMBRE_COMPLETO,
+        avatar: (usuario.SEXO == "M" ? 'https://i.pinimg.com/736x/63/fe/b7/63feb78e24de8202c21eb36d990f0155.jpg' : 'https://i.pinimg.com/736x/63/fe/b7/63feb78e24de8202c21eb36d990f0155.jpg'),
+        age: 25
+      }
+      //const tokens = "tokens12345"
+      setStorage('token', respuesta.datos.token, 7200)
+      localStorage.setItem('user', JSON.stringify(user));
 
-          const arrayNavigations = [...stableSort(convertToNestedMenu(menu, 0), getComparator("asc", "NUMERO_ORDEN"))]
-        
-        console.log("array Navigations ",arrayNavigations)
-          //prearando la variable para guardar en el local storage
-          localStorage.setItem('arrayNavigations', JSON.stringify(arrayNavigations));
-          // console.log("array Guardado ",localStorage.getItem('arrayNavigations')
+      //lamar a la api del mepnu 
+      // const responseMenu = await AplicationConnect.get('/menu')
+      // console.log("response a Menu ", responseMenu.data)
 
-        // }
-        dispatch({ type: 'LOGIN', payload: { user } });
-        dispatch({ type: 'INIT', payload: { isAuthenticated: true, user: user } });
+      // console.log("resposne data menu length ", responseMenu.data.length)
+      //formatear api  de menu token 
+
+
+      // Ejemplo de uso con todo el array:
+      const oldMenuFormat = respuesta.datos.menu.map(formatMenuItemToOldStructure);
+      // if (responseMenu.data.length > 0) {
+
+      // Luego puedes usar tus funciones antiguas normalmente:
+      const arrayNavigations = stableSort(convertToNestedMenu(oldMenuFormat, 0), getComparator("asc", "NUMERO_ORDEN"));
+
+      // const arrayNavigations = [...stableSort(convertToNestedMenu(menu, 0), getComparator("asc", "NUMERO_ORDEN"))]
+
+      console.log("array Navigations ", arrayNavigations)
+      //prearando la variable para guardar en el local storage
+      localStorage.setItem('arrayNavigations', JSON.stringify(arrayNavigations));
+      // console.log("array Guardado ",localStorage.getItem('arrayNavigations')
+
+      // }
+      dispatch({ type: 'LOGIN', payload: { user } });
+      dispatch({ type: 'INIT', payload: { isAuthenticated: true, user: user } });
       // }
 
       return {
-        status : true
+        status: true
       }
       // return respuesta.data
 
@@ -140,8 +147,16 @@ export const AuthProvider = ({ children }: any) => {
 
   };
 
-
-  //console.log("convet array ", stableSort(convertToNestedMenu(dataJson, 0), getComparator("asc", "NUMERO_ORDEN")))
+  const formatMenuItemToOldStructure = (item: any) => {
+    return {
+      ITEM: item.id,
+      NOMBRE: item.nombre,
+      NIVEL_SUPERIOR: item.idMenu === null ? 0 : item.idMenu,
+      NUMERO_ORDEN: item.orden,
+      LINK: item.ruta,
+      TIPO: item.ruta && item.ruta.trim() !== "" ? "acceso" : "menu",
+    };
+  };
 
   const convertToNestedMenu = (arr: any, parentId: number) => {
     return arr
@@ -187,20 +202,6 @@ export const AuthProvider = ({ children }: any) => {
     });
     return stabilizedThis.map((el: any) => el[0]);
   }
-
-
-  /*
-    const convertToNestedMenu = (arr: any, parentId: any) => {
-      return arr
-        .filter((item: any) => item.NIVEL_SUPERIOR === parentId)
-        .map((item: any) => {
-          if (item.TIPO === 'acceso') return item;
-          return {
-            ...item,
-            children: [...convertToNestedMenu(arr, item.ITEM)],
-          }
-        });
-    }*/
 
   const register = async (email: any, username: any, password: any) => {
     const response = await axios.post('/api/auth/register', { email, username, password });
