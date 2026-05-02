@@ -6,8 +6,8 @@ import {
     Grid,
     Divider,
 } from '@mui/material';
-import ControlledTextField from '../../../../../components/ControlledTextField';
-import ControlledSelectField from '../../../../../components/ControlledSelectField';
+import ControlledTextField from "../../../../components/ControlledTextField";
+import ControlledSelectField from "../../../../components/ControlledSelectField";
 
 const styleModal = {
     width: '50vw',

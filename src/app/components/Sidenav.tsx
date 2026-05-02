@@ -1,13 +1,13 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import Scrollbar from 'react-perfect-scrollbar';
 import { styled } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 import MatxVerticalNav from './MatxVerticalNav/MatxVerticalNav';
 //import { MatxVerticalNav } from 'app/components';
 import useSettings from '../hooks/useSettings';
 //import useSettings from 'app/hooks/useSettings';
 //import { NavLink } from 'react-router-dom';
-import { navigations } from '../navigations';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { librosMenuBloques } from '../navigation/librosMenu';
 
 
 const StyledScrollBar = styled(Scrollbar)(() => ({
@@ -33,15 +33,17 @@ const SideNavMobile = styled('div')(({ theme }) => ({
 
 const Sidenav = ({ children }: any) => {
   const { settings, updateSettings } = useSettings();
-  const [dataNavigations, setDataNavigations] = useState<any>([])
-  useEffect(() => {
-    // Actualiza el título del documento usando la API del navegador
-    //console.log("import data json ", convertToNestedMenu(dataJson, 0))
-    const requestMenu = JSON.parse(localStorage.getItem('arrayNavigations')!);
-    //console.log("resquest menu json SideNav", requestMenu)
-    setDataNavigations(requestMenu)
-    
-  }, []);
+  const location = useLocation();
+  const navItems = useMemo(() => {
+    try {
+      const raw = localStorage.getItem('arrayNavigations');
+      const fromServer = raw ? JSON.parse(raw) : [];
+      const base = Array.isArray(fromServer) ? fromServer : [];
+      return [...base, ...librosMenuBloques];
+    } catch {
+      return [...librosMenuBloques];
+    }
+  }, [location.pathname]);
 
   /*
   function convertToNestedMenu(arr: any, parentId: any) {
@@ -83,9 +85,7 @@ const Sidenav = ({ children }: any) => {
                   <h3>test btn</h3>
                 </NavLink> */}
 
-      {/*<MatxVerticalNav items={dataNavigations} />*/}
-       <MatxVerticalNav items={JSON.parse(localStorage.getItem('arrayNavigations')!)} />
-        {/*<MatxVerticalNav items={navigations} />*/}
+      <MatxVerticalNav items={navItems} />
 
       </StyledScrollBar>
 

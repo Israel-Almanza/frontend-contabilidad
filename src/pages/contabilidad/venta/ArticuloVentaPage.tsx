@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {styled} from '@mui/material';
-import ArticuloVenta from '../../../../app/modules/contabilidad/compras/articuloVenta/ArticuloVenta';
+import ArticuloVenta from '../../../app/modules/contabilidad/venta/ArticuloVenta';
 const Container = styled('div')(({ theme }) => ({
     margin: '10px',
     [theme.breakpoints.down('sm')]: {

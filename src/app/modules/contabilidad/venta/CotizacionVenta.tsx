@@ -4,14 +4,14 @@ import {
   TableCell, Grid, Container, Card, CardContent
 } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
-import CrudTable from '../../../../components/CrudTable';
-import { FormArticuloVenta } from './components/FormArticuloVenta';
-import AplicationConnect from '../../../../../core/api/AplicationConnect';
+import CrudTable from '../../../components/CrudTable';
+import AplicationConnect from '../../../../core/api/AplicationConnect';
 import { Controller, useForm } from "react-hook-form";
 import EditIcon from '@mui/icons-material/Edit';
-import ControlledButton from '../../../../components/ControlledButton';
+import ControlledButton from '../../../components/ControlledButton';
+import { FormCotizacionVenta } from './components/FormCotizacionVenta';
 
-const ArticuloVenta = () => {
+const CotizacionVenta = () => {
 
   const { handleSubmit, control, reset } = useForm();
 
@@ -73,10 +73,10 @@ const ArticuloVenta = () => {
 
   const openModal = async (open, id) => {
     // resetForm()
-    setTituloFormulario('Agregar Artículo')
+    setTituloFormulario('Agregar Cotizacion')
     reset({});
     if (id) {
-      setTituloFormulario('Editar Artículo')
+      setTituloFormulario('Editar Cotizacion')
       const { datos } = await AplicationConnect.get(`/${url}/${id}`)
       /* reset({
         id: datos.id,
@@ -107,7 +107,7 @@ const ArticuloVenta = () => {
     };
 
     return (
-      <FormArticuloVenta
+      <FormCotizacionVenta
         handleSubmit={handleSubmit}
         control={control}
         guardar={guardar}
@@ -150,7 +150,7 @@ const ArticuloVenta = () => {
             color: 'white',
           }}
         >
-          Artículos de compra
+          Contizacion Venta
         </Typography>
       </div>
       <Container>
@@ -178,4 +178,4 @@ const ArticuloVenta = () => {
   )
 }
 
-export default ArticuloVenta
+export default CotizacionVenta

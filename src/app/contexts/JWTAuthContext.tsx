@@ -154,6 +154,7 @@ export const AuthProvider = ({ children }: any) => {
       NIVEL_SUPERIOR: item.idMenu === null ? 0 : item.idMenu,
       NUMERO_ORDEN: item.orden,
       LINK: item.ruta,
+      ICONO: item.icono,
       TIPO: item.ruta && item.ruta.trim() !== "" ? "acceso" : "menu",
     };
   };

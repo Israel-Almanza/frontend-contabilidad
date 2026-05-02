@@ -1,11 +1,8 @@
+import React from 'react'
 
-
-import Venta from '../../app/modules/venta/Venta';
-//import Solicitudes from '../../app/modules/solicitudes/Solicitudes';
-
-
-import {  styled } from '@mui/material';
-
+import {styled} from '@mui/material';
+import ArticuloVenta from '../../../app/modules/contabilidad/venta/ArticuloVenta';
+import CotizacionVenta from '../../../app/modules/contabilidad/venta/CotizacionVenta';
 const Container = styled('div')(({ theme }) => ({
     margin: '10px',
     [theme.breakpoints.down('sm')]: {
@@ -20,12 +17,12 @@ const Container = styled('div')(({ theme }) => ({
 }));
 
 
-const VentaPage = () => {
+const CotizacionVentaPage = () => {
     return (
         <Container>
-            <Venta />
+            <CotizacionVenta />
         </Container>
     )
 }
 
-export default VentaPage;
+export default CotizacionVentaPage;

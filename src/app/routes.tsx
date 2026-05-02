@@ -16,11 +16,35 @@ import CitaPage from '../pages/cita/CitaPage';
 import FacturaPage from '../pages/factura/FacturaPage'
 import MenuPage from '../pages/menus/MenuPage';
 import ParametroPage from '../pages/parametros/ParametroPage';
-import ArticuloVentaPage from '../pages/contabilidad/compras/articuloVenta/ArticuloVentaPage';
+import ArticuloVentaPage from '../pages/contabilidad/venta/ArticuloVentaPage';
 import FacturaCompraPage from '../pages/contabilidad/compras/facturaCompra/FacturaCompraPage';
 import PermisoPage from '../pages/permisos/PermisoPage';
 import RolPage from '../pages/roles/RolPage';
 import UsuarioPage from '../pages/usuario/UsuarioPage';
+import LibrosInicioPage from '../pages/libros/LibrosInicioPage';
+import {
+  LibrosPlanCuentasPage,
+  LibrosSociosComercialesPage,
+  LibrosArticulosPage,
+  LibrosVentasCotizacionesPage,
+  LibrosVentasFacturasPage,
+  LibrosVentasPagosPage,
+  LibrosVentasClientesPage,
+  LibrosVentasArticulosPage,
+  LibrosComprasFacturasPage,
+  LibrosComprasPagosPage,
+  LibrosComprasProveedoresPage,
+  LibrosComprasArticulosPage,
+  LibrosComunEntradasDiarioPage,
+  LibrosConfigPlantillasImpuestosPage,
+  LibrosConfigPlantillasImpresionPage,
+  LibrosInformeLibroMayorPage,
+  LibrosInformeGananciasPerdidasPage,
+  LibrosInformeBalanceGeneralPage,
+  LibrosInformeBalanceProvisionalPage,
+  LibrosConfiguracionContablePage,
+} from '../pages/libros/modulos/librosModulosPages';
+import CotizacionVentaPage from '../pages/contabilidad/venta/CotizacionVentaPage';
 //import materialRoutes from 'app/views/material-kit/MaterialRoutes';
 
 // session pages
@@ -51,6 +75,30 @@ const perfilesRoutes = [
 
   { path: '/articulo-venta', element: <ArticuloVentaPage /> },
   { path: '/factura-compra', element: <FacturaCompraPage /> },
+
+  { path: '/libros', element: <LibrosInicioPage /> },
+  { path: '/libros/plan-cuentas', element: <LibrosPlanCuentasPage /> },
+  { path: '/libros/socios-comerciales', element: <LibrosSociosComercialesPage /> },
+  { path: '/libros/articulos', element: <LibrosArticulosPage /> },
+  // { path: '/libros/ventas/cotizaciones', element: <LibrosVentasCotizacionesPage /> },
+  { path: '/libros/ventas/cotizaciones', element: <CotizacionVentaPage /> },
+  { path: '/libros/ventas/facturas', element: <LibrosVentasFacturasPage /> },
+  { path: '/libros/ventas/pagos', element: <LibrosVentasPagosPage /> },
+  { path: '/libros/ventas/clientes', element: <LibrosVentasClientesPage /> },
+  // LibrosVentasArticulosPage,
+  { path: '/libros/ventas/articulos', element: <ArticuloVentaPage /> },
+  { path: '/libros/compras/facturas', element: <LibrosComprasFacturasPage /> },
+  { path: '/libros/compras/pagos', element: <LibrosComprasPagosPage /> },
+  { path: '/libros/compras/proveedores', element: <LibrosComprasProveedoresPage /> },
+  { path: '/libros/compras/articulos', element: <LibrosComprasArticulosPage /> },
+  { path: '/libros/comun/entradas-diario', element: <LibrosComunEntradasDiarioPage /> },
+  { path: '/libros/configuracion/plantillas-impuestos', element: <LibrosConfigPlantillasImpuestosPage /> },
+  { path: '/libros/configuracion/plantillas-impresion', element: <LibrosConfigPlantillasImpresionPage /> },
+  { path: '/libros/configuracion/contabilidad', element: <LibrosConfiguracionContablePage /> },
+  { path: '/libros/informes/libro-mayor', element: <LibrosInformeLibroMayorPage /> },
+  { path: '/libros/informes/ganancias-perdidas', element: <LibrosInformeGananciasPerdidasPage /> },
+  { path: '/libros/informes/balance-general', element: <LibrosInformeBalanceGeneralPage /> },
+  { path: '/libros/informes/balance-provisional', element: <LibrosInformeBalanceProvisionalPage /> },
 
   { path: '/pacientes', element: <PacientePage /> },
 
