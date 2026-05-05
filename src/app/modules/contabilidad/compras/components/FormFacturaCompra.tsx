@@ -10,8 +10,8 @@ import {
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 
-import ControlledTextField from '../../../../../components/ControlledTextField'
-import ControlledSelectField from '../../../../../components/ControlledSelectField'
+import ControlledTextField from '../../../../components/ControlledTextField'
+import ControlledSelectField from '../../../../components/ControlledSelectField'
 
 const styleModal = {
   width: '60vw',

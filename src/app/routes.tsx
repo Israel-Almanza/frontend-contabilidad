@@ -53,16 +53,16 @@ const perfilesRoutes = [
   { path: '/roles', element: <RolPage /> },
   { path: '/usuarios', element: <UsuarioPage /> },
 
-
-  { path: '/articulo-venta', element: <ArticuloVentaPage /> },
-  { path: '/factura-compra', element: <FacturaCompraPage /> },
-
-  { path: '/libros/ventas/cotizaciones', element: <CotizacionVentaPage /> },  
+  /* Modulo de Ventas */
+  { path: '/libros/ventas/cotizaciones', element: <CotizacionVentaPage /> },
   { path: '/libros/ventas/facturas', element: <FacturaVentaPage /> },
   { path: '/libros/ventas/pagos', element: <PagoVentaPage /> },
   { path: '/libros/ventas/clientes', element: <ClienteVentaPage /> },
   { path: '/libros/ventas/articulos', element: <ArticuloVentaPage /> },
 
+  /* Modolo de Compras */
+  { path: '/libros/compras/facturas', element: <FacturaCompraPage /> },
+  
 
   { path: '/pacientes', element: <PacientePage /> },
 

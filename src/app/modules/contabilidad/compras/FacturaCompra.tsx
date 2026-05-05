@@ -5,7 +5,7 @@ import {
 } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import CrudTable from '../../../../components/CrudTable';
-import { FormFacturaCompra } from './components/FormFacturaCompra';
+import { FormFacturaCompra } from '../components/FormFacturaCompra';
 import AplicationConnect from '../../../../../core/api/AplicationConnect';
 import { Controller, useForm } from "react-hook-form";
 import EditIcon from '@mui/icons-material/Edit';
