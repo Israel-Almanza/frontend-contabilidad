@@ -20,7 +20,7 @@ const styleModal = {
     minWidth: '320px',    // mobile safe
     padding: '20px',
 };
-export const FormCotizacionVenta = ({
+export const FormFacturaVenta = ({
   guardar,
   cancelar,
   handleSubmit,

@@ -9,9 +9,9 @@ import AplicationConnect from '../../../../core/api/AplicationConnect';
 import { FormProvider, useForm } from "react-hook-form";
 import EditIcon from '@mui/icons-material/Edit';
 import ControlledButton from '../../../components/ControlledButton';
-import { FormCotizacionVenta } from './components/FormCotizacionVenta';
+import { FormFacturaVenta } from './components/FormFacturaVenta';
 
-const CotizacionVenta = () => {
+const FacturaVenta = () => {
 
   const methods = useForm({
     defaultValues: {
@@ -79,10 +79,10 @@ const CotizacionVenta = () => {
 
   const openModal = async (open, id) => {
     // resetForm()
-    setTituloFormulario('Agregar Cotizacion')
+    setTituloFormulario('Agregar Factura')
     reset({ articulos: [] });
     if (id) {
-      setTituloFormulario('Editar Cotizacion')
+      setTituloFormulario('Editar Factura')
       const { datos } = await AplicationConnect.get(`/${url}/${id}`)
       /* reset({
         id: datos.id,
@@ -117,7 +117,7 @@ const CotizacionVenta = () => {
 
     return (
       <FormProvider {...methods}>
-        <FormCotizacionVenta
+        <FormFacturaVenta
           handleSubmit={handleSubmit}
           control={control}
           guardar={guardar}
@@ -161,7 +161,7 @@ const CotizacionVenta = () => {
             color: 'white',
           }}
         >
-          Contizacion Venta
+          Factura Venta
         </Typography>
       </div>
       <Container>
@@ -189,4 +189,4 @@ const CotizacionVenta = () => {
   )
 }
 
-export default CotizacionVenta
+export default FacturaVenta

@@ -5,21 +5,15 @@ import {
 } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import CrudTable from '../../../components/CrudTable';
+import { FormPagoVenta } from './components/FormPagoVenta';
 import AplicationConnect from '../../../../core/api/AplicationConnect';
-import { FormProvider, useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import EditIcon from '@mui/icons-material/Edit';
 import ControlledButton from '../../../components/ControlledButton';
-import { FormCotizacionVenta } from './components/FormCotizacionVenta';
 
-const CotizacionVenta = () => {
+const ArticuloVenta = () => {
 
-  const methods = useForm({
-    defaultValues: {
-      articulos: [] as Record<string, string | number>[],
-    },
-  });
-
-  const { handleSubmit, control, reset } = methods;
+  const { handleSubmit, control, reset } = useForm();
 
 
    const [tituloFormulario, setTituloFormulario] = useState('Agregar Artículo');
@@ -79,10 +73,10 @@ const CotizacionVenta = () => {
 
   const openModal = async (open, id) => {
     // resetForm()
-    setTituloFormulario('Agregar Cotizacion')
-    reset({ articulos: [] });
+    setTituloFormulario('Agregar Artículo')
+    reset({});
     if (id) {
-      setTituloFormulario('Editar Cotizacion')
+      setTituloFormulario('Editar Artículo')
       const { datos } = await AplicationConnect.get(`/${url}/${id}`)
       /* reset({
         id: datos.id,
@@ -90,10 +84,7 @@ const CotizacionVenta = () => {
         ruta: datos.ruta,
         icono: datos.icono,
       }) */
-      reset({
-        ...datos,
-        articulos: Array.isArray(datos.articulos) ? datos.articulos : [],
-      });
+      reset(datos);
     }
     open()
   }
@@ -111,20 +102,18 @@ const CotizacionVenta = () => {
 
 
     const handleClose = () => {
-      reset({ articulos: [] });
+      reset({});        // 👈 limpiar siempre
       close();
     };
 
     return (
-      <FormProvider {...methods}>
-        <FormCotizacionVenta
-          handleSubmit={handleSubmit}
-          control={control}
-          guardar={guardar}
-          tituloFormulario={tituloFormulario}
-          cancelar={handleClose}
-        />
-      </FormProvider>
+      <FormPagoVenta
+        handleSubmit={handleSubmit}
+        control={control}
+        guardar={guardar}
+        tituloFormulario = {tituloFormulario}
+        cancelar={handleClose}
+      />
     );
   };
 
@@ -161,7 +150,7 @@ const CotizacionVenta = () => {
             color: 'white',
           }}
         >
-          Contizacion Venta
+          Artículos de compra
         </Typography>
       </div>
       <Container>
@@ -189,4 +178,4 @@ const CotizacionVenta = () => {
   )
 }
 
-export default CotizacionVenta
+export default ArticuloVenta
