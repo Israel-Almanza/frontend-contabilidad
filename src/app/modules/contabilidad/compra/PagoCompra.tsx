@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
-  Typography, Button, Collapse, TableRow, IconButton,
+  Typography, TableRow, IconButton,
   TableCell, Grid, Container, Card, CardContent
 } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
-import CrudTable from '../../../../components/CrudTable';
-import { FormFacturaCompra } from '../components/FormFacturaCompra';
-import AplicationConnect from '../../../../../core/api/AplicationConnect';
-import { Controller, useForm } from "react-hook-form";
+import CrudTable from '../../../components/CrudTable';
+import { FormPagoCompra } from './components/FormPagoCompra';
+import AplicationConnect from '../../../../core/api/AplicationConnect';
+import { useForm } from "react-hook-form";
 import EditIcon from '@mui/icons-material/Edit';
-import ControlledButton from '../../../../components/ControlledButton';
+import ControlledButton from '../../../components/ControlledButton';
 
-const FacturaCompra = () => {
+const PagoCompra = () => {
 
   const { handleSubmit, control, reset } = useForm();
 
 
-   const [tituloFormulario, setTituloFormulario] = useState('Agregar Facutra');
+   const [tituloFormulario, setTituloFormulario] = useState('Agregar Artículo');
 
   const columns = [
     { value: 'nombre', label: 'Nombre del artículo' },
@@ -72,18 +72,11 @@ const FacturaCompra = () => {
   };
 
   const openModal = async (open, id) => {
-    // resetForm()
-    setTituloFormulario('Agregar Fatura')
+    setTituloFormulario('Agregar Artículo')
     reset({});
     if (id) {
-      setTituloFormulario('Editar Factura')
+      setTituloFormulario('Editar Artículo')
       const { datos } = await AplicationConnect.get(`/${url}/${id}`)
-      /* reset({
-        id: datos.id,
-        nombre: datos.nombre,
-        ruta: datos.ruta,
-        icono: datos.icono,
-      }) */
       reset(datos);
     }
     open()
@@ -102,12 +95,12 @@ const FacturaCompra = () => {
 
 
     const handleClose = () => {
-      reset({});        // 👈 limpiar siempre
+      reset({});
       close();
     };
 
     return (
-      <FormFacturaCompra
+      <FormPagoCompra
         handleSubmit={handleSubmit}
         control={control}
         guardar={guardar}
@@ -145,12 +138,12 @@ const FacturaCompra = () => {
             margin: 0,
             display: 'flex',
             alignItems: 'center',
-            gap: '8px', // espacio entre icono y texto
+            gap: '8px',
             marginLeft: '10px',
             color: 'white',
           }}
         >
-          Factura de Compra
+          Pago Compra
         </Typography>
       </div>
       <Container>
@@ -178,4 +171,4 @@ const FacturaCompra = () => {
   )
 }
 
-export default FacturaCompra
+export default PagoCompra

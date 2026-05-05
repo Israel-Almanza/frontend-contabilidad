@@ -17,7 +17,10 @@ import FacturaPage from '../pages/factura/FacturaPage'
 import MenuPage from '../pages/menus/MenuPage';
 import ParametroPage from '../pages/parametros/ParametroPage';
 import ArticuloVentaPage from '../pages/contabilidad/venta/ArticuloVentaPage';
-import FacturaCompraPage from '../pages/contabilidad/compras/facturaCompra/FacturaCompraPage';
+import FacturaCompraPage from '../pages/contabilidad/compra/FacturaCompraPage';
+import PagoCompraPage from '../pages/contabilidad/compra/PagoCompraPage';
+import ProveedorPage from '../pages/contabilidad/compra/ProveedorPage';
+import ArticuloCompraPage from '../pages/contabilidad/compra/ArticuloCompraPage';
 import PermisoPage from '../pages/permisos/PermisoPage';
 import RolPage from '../pages/roles/RolPage';
 import UsuarioPage from '../pages/usuario/UsuarioPage';
@@ -26,6 +29,9 @@ import CotizacionVentaPage from '../pages/contabilidad/venta/CotizacionVentaPage
 import FacturaVentaPage from '../pages/contabilidad/venta/FacturaVentaPage';
 import PagoVentaPage from '../pages/contabilidad/venta/PagoVentaPage';
 import ClienteVentaPage from '../pages/contabilidad/venta/ClienteVentaPage';
+import EntradaDiarioPage from '../pages/contabilidad/compra/EntradaDiarioPage';
+import SocioComercialPage from '../pages/contabilidad/compra/SocioComercialPage';
+import ArticuloPage from '../pages/contabilidad/compra/ArticuloPage';
 //import materialRoutes from 'app/views/material-kit/MaterialRoutes';
 
 // session pages
@@ -60,9 +66,16 @@ const perfilesRoutes = [
   { path: '/libros/ventas/clientes', element: <ClienteVentaPage /> },
   { path: '/libros/ventas/articulos', element: <ArticuloVentaPage /> },
 
-  /* Modolo de Compras */
+  /* Modulo Comun */
+  { path: '/libros/comun/entradas-diario', element: <EntradaDiarioPage /> },
+  { path: '/libros/socios-comerciales', element: <SocioComercialPage /> },
+  { path: '/libros/articulos', element: <ArticuloPage /> },
+
+  /* Modulo de Compras */
   { path: '/libros/compras/facturas', element: <FacturaCompraPage /> },
-  
+  { path: '/libros/compras/pagos', element: <PagoCompraPage /> },
+  { path: '/libros/compras/proveedores', element: <ProveedorPage /> },
+  { path: '/libros/compras/articulos', element: <ArticuloCompraPage /> },
 
   { path: '/pacientes', element: <PacientePage /> },
 

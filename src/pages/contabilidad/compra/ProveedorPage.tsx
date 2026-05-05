@@ -1,7 +1,6 @@
 import React from 'react'
-
+import Proveedor from '../../../app/modules/contabilidad/compra/Proveedor';
 import {styled} from '@mui/material';
-import FacturaCompra from '../../../../app/modules/contabilidad/compras/facturaCompra/FacturaCompra';
 
 const Container = styled('div')(({ theme }) => ({
     margin: '10px',
@@ -17,12 +16,12 @@ const Container = styled('div')(({ theme }) => ({
 }));
 
 
-const FacturaCompraPage = () => {
+const ProveedorPage = () => {
     return (
         <Container>
-            <FacturaCompra />
+            <Proveedor />
         </Container>
     )
 }
 
-export default FacturaCompraPage;
+export default ProveedorPage;
