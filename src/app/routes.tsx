@@ -32,6 +32,10 @@ import ClienteVentaPage from '../pages/contabilidad/venta/ClienteVentaPage';
 import EntradaDiarioPage from '../pages/contabilidad/compra/EntradaDiarioPage';
 import SocioComercialPage from '../pages/contabilidad/compra/SocioComercialPage';
 import ArticuloPage from '../pages/contabilidad/compra/ArticuloPage';
+import LibroMayorPage from '../pages/contabilidad/reportes/LibroMayorPage';
+import EstadoResultadoPage from '../pages/contabilidad/reportes/EstadoResultadoPage';
+import BalanceGeneralPage from '../pages/contabilidad/reportes/BalanceGeneralPage';
+import BalanceComprobacionPage from '../pages/contabilidad/reportes/BalanceComprobacionPage';
 //import materialRoutes from 'app/views/material-kit/MaterialRoutes';
 
 // session pages
@@ -70,6 +74,12 @@ const perfilesRoutes = [
   { path: '/libros/comun/entradas-diario', element: <EntradaDiarioPage /> },
   { path: '/libros/socios-comerciales', element: <SocioComercialPage /> },
   { path: '/libros/articulos', element: <ArticuloPage /> },
+
+  /* Modulo Reportes */
+  { path: '/libros/informes/libro-mayor', element: <LibroMayorPage /> },
+  { path: '/libros/informes/ganancias-perdidas', element: <EstadoResultadoPage /> },
+  { path: '/libros/informes/balance-general', element: <BalanceGeneralPage /> },
+  { path: '/libros/informes/balance-provisional', element: <BalanceComprobacionPage /> },
 
   /* Modulo de Compras */
   { path: '/libros/compras/facturas', element: <FacturaCompraPage /> },
