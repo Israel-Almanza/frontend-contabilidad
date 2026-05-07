@@ -22,30 +22,29 @@ const FacturaCompra = () => {
   const { handleSubmit, control, reset } = methods;
 
 
-   const [tituloFormulario, setTituloFormulario] = useState('Agregar Artículo');
+   const [tituloFormulario, setTituloFormulario] = useState('Agregar Factura');
 
   const columns = [
-    { value: 'nombre', label: 'Nombre del artículo' },
-    { value: 'unidad', label: 'Tipo de Unidad' },
-    { value: 'impuesto', label: 'Impuesto' },
-    { value: 'precio', label: 'Tarifa' },
-
+    { value: 'nombre', label: 'Numero' },
+    { value: 'serieNumeracion', label: 'Serie' },
+    { value: 'tercero', label: 'Proveedor' },
+    { value: 'fecha', label: 'Fecha' },
   ];
 
   const filters = [
     { label: 'Nombre', field: 'nombre', type: 'input' },
   ];
 
-  const url = 'ctb/items';
+  const url = 'ctb/compras/facturas';
 
   const RowComponent = ({ row, open, update, eliminar }) => {
 
     return (
       <TableRow>
         <TableCell>{row.nombre}</TableCell>
-        <TableCell>{row.unidad}</TableCell>
-        <TableCell>{row.impuesto}</TableCell>
-        <TableCell>{row.precio}</TableCell>
+        <TableCell>{row.serieNumeracion}</TableCell>
+        <TableCell>{row.tercero}</TableCell>
+        <TableCell>{row.fecha ? String(row.fecha).slice(0, 10) : ''}</TableCell>
         <TableCell>
           <IconButton
             onClick={() => eliminar({ url: `${url}/${row.id}` })}

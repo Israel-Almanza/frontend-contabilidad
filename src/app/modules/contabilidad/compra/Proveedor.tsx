@@ -16,30 +16,29 @@ const Proveedor = () => {
   const { handleSubmit, control, reset } = useForm();
 
 
-   const [tituloFormulario, setTituloFormulario] = useState('Agregar Artículo');
+   const [tituloFormulario, setTituloFormulario] = useState('Agregar Proveedor');
 
   const columns = [
-    { value: 'nombre', label: 'Nombre del artículo' },
-    { value: 'unidad', label: 'Tipo de Unidad' },
-    { value: 'impuesto', label: 'Impuesto' },
-    { value: 'precio', label: 'Tarifa' },
-
+    { value: 'nombre', label: 'Nombre' },
+    { value: 'correo', label: 'Correo' },
+    { value: 'telefono', label: 'Telefono' },
+    { value: 'idFiscal', label: 'NIT' },
   ];
 
   const filters = [
     { label: 'Nombre', field: 'nombre', type: 'input' },
   ];
 
-  const url = 'ctb/items';
+  const url = 'ctb/compras/proveedores';
 
   const RowComponent = ({ row, open, update, eliminar }) => {
 
     return (
       <TableRow>
         <TableCell>{row.nombre}</TableCell>
-        <TableCell>{row.unidad}</TableCell>
-        <TableCell>{row.impuesto}</TableCell>
-        <TableCell>{row.precio}</TableCell>
+        <TableCell>{row.correo}</TableCell>
+        <TableCell>{row.telefono}</TableCell>
+        <TableCell>{row.idFiscal}</TableCell>
         <TableCell>
           <IconButton
             onClick={() => eliminar({ url: `${url}/${row.id}` })}
@@ -72,10 +71,10 @@ const Proveedor = () => {
   };
 
   const openModal = async (open, id) => {
-    setTituloFormulario('Agregar Artículo')
+    setTituloFormulario('Agregar Proveedor')
     reset({});
     if (id) {
-      setTituloFormulario('Editar Artículo')
+      setTituloFormulario('Editar Proveedor')
       const { datos } = await AplicationConnect.get(`/${url}/${id}`)
       reset(datos);
     }

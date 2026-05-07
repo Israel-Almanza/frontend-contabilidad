@@ -16,30 +16,29 @@ const PagoCompra = () => {
   const { handleSubmit, control, reset } = useForm();
 
 
-   const [tituloFormulario, setTituloFormulario] = useState('Agregar Artículo');
+   const [tituloFormulario, setTituloFormulario] = useState('Agregar Pago');
 
   const columns = [
-    { value: 'nombre', label: 'Nombre del artículo' },
-    { value: 'unidad', label: 'Tipo de Unidad' },
-    { value: 'impuesto', label: 'Impuesto' },
-    { value: 'precio', label: 'Tarifa' },
-
+    { value: 'nombre', label: 'Numero' },
+    { value: 'tercero', label: 'Proveedor' },
+    { value: 'metodoPago', label: 'Metodo de pago' },
+    { value: 'monto', label: 'Monto' },
   ];
 
   const filters = [
     { label: 'Nombre', field: 'nombre', type: 'input' },
   ];
 
-  const url = 'ctb/items';
+  const url = 'ctb/compras/pagos';
 
   const RowComponent = ({ row, open, update, eliminar }) => {
 
     return (
       <TableRow>
         <TableCell>{row.nombre}</TableCell>
-        <TableCell>{row.unidad}</TableCell>
-        <TableCell>{row.impuesto}</TableCell>
-        <TableCell>{row.precio}</TableCell>
+        <TableCell>{row.tercero}</TableCell>
+        <TableCell>{row.metodoPago}</TableCell>
+        <TableCell>{row.monto}</TableCell>
         <TableCell>
           <IconButton
             onClick={() => eliminar({ url: `${url}/${row.id}` })}
@@ -72,10 +71,10 @@ const PagoCompra = () => {
   };
 
   const openModal = async (open, id) => {
-    setTituloFormulario('Agregar Artículo')
+    setTituloFormulario('Agregar Pago')
     reset({});
     if (id) {
-      setTituloFormulario('Editar Artículo')
+      setTituloFormulario('Editar Pago')
       const { datos } = await AplicationConnect.get(`/${url}/${id}`)
       reset(datos);
     }
