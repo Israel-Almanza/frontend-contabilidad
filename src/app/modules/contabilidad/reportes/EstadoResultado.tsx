@@ -1,14 +1,20 @@
 import React from 'react';
-import { Typography, Grid, Container, Card, CardContent } from '@mui/material';
+import { Typography, Grid, Container, Card, CardContent, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { useForm } from "react-hook-form";
 import ControlledTextField from '../../../components/ControlledTextField';
 import ControlledButton from '../../../components/ControlledButton';
+import AplicationConnect from '../../../../core/api/AplicationConnect';
 
 const EstadoResultado = () => {
   const { handleSubmit, control } = useForm();
+  const [rows, setRows] = React.useState<any[]>([]);
+  const [totales, setTotales] = React.useState<any>({});
 
-  const generar = (model: any) => {
-    return model;
+  const generar = async (model: any) => {
+    const query = new URLSearchParams({ periodo: model?.periodo || '' }).toString();
+    const respuesta = await AplicationConnect.get(`/libros/informes/ganancias-perdidas?${query}`);
+    setRows(respuesta?.datos?.rows || []);
+    setTotales(respuesta?.datos || {});
   };
 
   return (
@@ -48,6 +54,36 @@ const EstadoResultado = () => {
                 <ControlledButton onClick={handleSubmit(generar)} variant="contained" color="primary">
                   Generar reporte
                 </ControlledButton>
+              </Grid>
+              <Grid size={{ xs: 12 }}>
+                <Table size="small">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Categoria</TableCell>
+                      <TableCell>Total</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {rows.map((row, index) => (
+                      <TableRow key={index}>
+                        <TableCell>{row.categoria}</TableCell>
+                        <TableCell>{row.total}</TableCell>
+                      </TableRow>
+                    ))}
+                    <TableRow>
+                      <TableCell><strong>Total ingresos</strong></TableCell>
+                      <TableCell>{totales.totalIngresos || 0}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell><strong>Total gastos</strong></TableCell>
+                      <TableCell>{totales.totalGastos || 0}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell><strong>Utilidad neta</strong></TableCell>
+                      <TableCell>{totales.utilidadNeta || 0}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
               </Grid>
             </Grid>
           </CardContent>

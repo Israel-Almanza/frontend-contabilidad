@@ -70,6 +70,7 @@
     "react-scripts": "^0.0.0",
     "react-tabs": "^6.0.0",
     "react-toastify": "^9.1.2",
+    "recharts": "^3.8.1",
     "sheetjs-style": "^0.15.8",
     "shortid": "^2.2.16",
     "styled-components": "^5.3.10",
