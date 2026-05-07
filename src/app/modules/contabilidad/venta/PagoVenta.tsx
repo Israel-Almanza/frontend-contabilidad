@@ -11,35 +11,34 @@ import { Controller, useForm } from "react-hook-form";
 import EditIcon from '@mui/icons-material/Edit';
 import ControlledButton from '../../../components/ControlledButton';
 
-const ArticuloVenta = () => {
+const PagoVenta = () => {
 
   const { handleSubmit, control, reset } = useForm();
 
 
-   const [tituloFormulario, setTituloFormulario] = useState('Agregar Artículo');
+   const [tituloFormulario, setTituloFormulario] = useState('Agregar Pago');
 
   const columns = [
-    { value: 'nombre', label: 'Nombre del artículo' },
-    { value: 'unidad', label: 'Tipo de Unidad' },
-    { value: 'impuesto', label: 'Impuesto' },
-    { value: 'precio', label: 'Tarifa' },
-
+    { value: 'nombre', label: 'Numero' },
+    { value: 'tercero', label: 'Cliente' },
+    { value: 'metodoPago', label: 'Metodo de pago' },
+    { value: 'monto', label: 'Monto' },
   ];
 
   const filters = [
     { label: 'Nombre', field: 'nombre', type: 'input' },
   ];
 
-  const url = 'ctb/items';
+  const url = 'ctb/ventas/pagos';
 
   const RowComponent = ({ row, open, update, eliminar }) => {
 
     return (
       <TableRow>
         <TableCell>{row.nombre}</TableCell>
-        <TableCell>{row.unidad}</TableCell>
-        <TableCell>{row.impuesto}</TableCell>
-        <TableCell>{row.precio}</TableCell>
+        <TableCell>{row.tercero}</TableCell>
+        <TableCell>{row.metodoPago}</TableCell>
+        <TableCell>{row.monto}</TableCell>
         <TableCell>
           <IconButton
             onClick={() => eliminar({ url: `${url}/${row.id}` })}
@@ -73,10 +72,10 @@ const ArticuloVenta = () => {
 
   const openModal = async (open, id) => {
     // resetForm()
-    setTituloFormulario('Agregar Artículo')
+    setTituloFormulario('Agregar Pago')
     reset({});
     if (id) {
-      setTituloFormulario('Editar Artículo')
+      setTituloFormulario('Editar Pago')
       const { datos } = await AplicationConnect.get(`/${url}/${id}`)
       /* reset({
         id: datos.id,
@@ -150,7 +149,7 @@ const ArticuloVenta = () => {
             color: 'white',
           }}
         >
-          Artículos de compra
+          Pagos de venta
         </Typography>
       </div>
       <Container>
@@ -178,4 +177,4 @@ const ArticuloVenta = () => {
   )
 }
 
-export default ArticuloVenta
+export default PagoVenta

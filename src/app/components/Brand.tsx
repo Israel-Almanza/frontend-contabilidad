@@ -39,7 +39,9 @@ const Brand = ({ children }: any) => {
 
           <div onClick={() => navigate('/')}
             style={{ width: '100%', margin: 'auto', marginTop: '20px', marginBottom: '8px' }}>
-            <img style={{ width: '100%' }} src="https://w3sistemas.com/wp-content/uploads/Sistema-Contable-1024x1024.jpg" />
+            {/*<img style={{ width: '100%' }} src="https://w3sistemas.com/wp-content/uploads/Sistema-Contable-1024x1024.jpg" />
+            */}
+            <h4 style={{color:'red', 'textAlign':'center'}}>Sistema Contable</h4>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <AccountCircleIcon sx={{}} />

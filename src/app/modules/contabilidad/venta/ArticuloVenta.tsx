@@ -20,17 +20,16 @@ const ArticuloVenta = () => {
 
   const columns = [
     { value: 'nombre', label: 'Nombre del artículo' },
-    { value: 'unidad', label: 'Tipo de Unidad' },
+    { value: 'unidad', label: 'Tipo de unidad' },
     { value: 'impuesto', label: 'Impuesto' },
-    { value: 'precio', label: 'Tarifa' },
-
+    { value: 'tarifa', label: 'Tarifa' },
   ];
 
   const filters = [
     { label: 'Nombre', field: 'nombre', type: 'input' },
   ];
 
-  const url = 'ctb/items';
+  const url = 'ctb/ventas/articulos';
 
   const RowComponent = ({ row, open, update, eliminar }) => {
 
@@ -39,7 +38,7 @@ const ArticuloVenta = () => {
         <TableCell>{row.nombre}</TableCell>
         <TableCell>{row.unidad}</TableCell>
         <TableCell>{row.impuesto}</TableCell>
-        <TableCell>{row.precio}</TableCell>
+        <TableCell>{row.tarifa}</TableCell>
         <TableCell>
           <IconButton
             onClick={() => eliminar({ url: `${url}/${row.id}` })}
@@ -150,7 +149,7 @@ const ArticuloVenta = () => {
             color: 'white',
           }}
         >
-          Artículos de compra
+          Artículos de venta
         </Typography>
       </div>
       <Container>
