@@ -4,10 +4,12 @@ import {
     Button,
     Typography,
     Grid,
+    Paper,
     Divider,
 } from '@mui/material';
 import ControlledTextField from "../../../../components/ControlledTextField";
 import ControlledSelectField from "../../../../components/ControlledSelectField";
+import ControlledFoto from "../../../../components/form/ControlledFoto";
 
 const styleModal = {
     width: '50vw',
@@ -16,7 +18,7 @@ const styleModal = {
     padding: '20px',
 };
 
-export const FormArticuloVenta = ({ guardar, cancelar, handleSubmit, control , tituloFormulario = ''}) => {
+export const FormArticuloVenta = ({ guardar, cancelar, handleSubmit, control, tituloFormulario = '' }) => {
     return (
         <Box sx={styleModal}>
 
@@ -39,17 +41,15 @@ export const FormArticuloVenta = ({ guardar, cancelar, handleSubmit, control , t
 
                 {/* Imagen */}
                 <Grid size={{ xs: 12, md: 4 }}>
-                    <Box
-                        sx={{
-                            width: '100%',
-                            height: 150,
-                            borderRadius: '8px',
-                            backgroundColor: '#F5F5F5',
-                            backgroundImage: `url(/placeholder-image.png)`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                        }}
-                    />
+                        <ControlledFoto
+                            name="imagen"
+                            label="Foto de Artículo"
+                            control={control}
+                            defaultImage=""
+                            width='100%'
+                            height={160}
+                        />
+
                 </Grid>
 
                 {/* Campos principales */}

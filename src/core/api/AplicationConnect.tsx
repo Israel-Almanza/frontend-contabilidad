@@ -15,12 +15,13 @@ const AplicationConnect = axios.create({
 AplicationConnect.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token')
+        const isFormData = typeof FormData !== 'undefined' && config.data instanceof FormData;
 
         if (token) {
             config.headers = {
                 ...config.headers,
                 Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json'
+                ...(isFormData ? {} : { 'Content-Type': 'application/json' })
             }
         }
 

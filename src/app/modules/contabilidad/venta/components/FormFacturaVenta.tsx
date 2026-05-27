@@ -11,6 +11,7 @@ import ControlledTextField from "../../../../components/ControlledTextField";
 import ControlledSelectField from "../../../../components/ControlledSelectField";
 import ControlledDateField from "../../../../components/ControlledDateField";
 import ControlledTable from "../../../../components/ControlledTable";
+import ControlledFoto from "../../../../components/form/ControlledFoto";
 
 const impuestos: { value: string; label: string }[] = [];
 
@@ -27,6 +28,29 @@ export const FormFacturaVenta = ({
   control,
   tituloFormulario = "",
 }) => {
+  const handleSubmitWithFormData = (model: any) => {
+    const formData = new FormData();
+
+    Object.entries(model || {}).forEach(([key, value]: [string, any]) => {
+      if (value === undefined || value === null) return;
+
+      if (key === "imagen") {
+        if (value instanceof File) {
+          formData.append("imagen", value);
+        }
+        return;
+      }
+
+      if (Array.isArray(value) || typeof value === "object") {
+        formData.append(key, JSON.stringify(value));
+      } else {
+        formData.append(key, String(value));
+      }
+    });
+
+    guardar(formData);
+  };
+
   return (
     <Box sx={styleModal}>
 
@@ -76,6 +100,20 @@ export const FormFacturaVenta = ({
           />
         </Grid>
       </Grid>
+
+      <Paper sx={{ p: 3, mb: 3 , backgroundColor:'red' }}>
+        <Typography variant="subtitle1" sx={{ mb: 2 }}>
+          Imagen
+        </Typography>
+        <ControlledFoto
+          name="imagen"
+          label="Foto de factura"
+          control={control}
+          defaultImage=""
+          width={220}
+          height={160}
+        />
+      </Paper>
 
 
       {/* ===== ARTÍCULOS ===== */}
@@ -153,7 +191,7 @@ export const FormFacturaVenta = ({
         <Button onClick={cancelar} sx={{ mr: 2 }}>
           Cancelar
         </Button>
-        <Button onClick={handleSubmit(guardar)} variant="contained">
+        <Button onClick={handleSubmit(handleSubmitWithFormData)} variant="contained">
           Guardar
         </Button>
       </Box>

@@ -16,6 +16,7 @@ const FacturaVenta = () => {
   const methods = useForm({
     defaultValues: {
       articulos: [] as Record<string, string | number>[],
+      imagen: null as File | string | null,
     },
   });
 
@@ -79,7 +80,7 @@ const FacturaVenta = () => {
   const openModal = async (open, id) => {
     // resetForm()
     setTituloFormulario('Agregar Factura')
-    reset({ articulos: [] });
+    reset({ articulos: [], imagen: null });
     if (id) {
       setTituloFormulario('Editar Factura')
       const { datos } = await AplicationConnect.get(`/${url}/${id}`)
@@ -92,6 +93,7 @@ const FacturaVenta = () => {
       reset({
         ...datos,
         articulos: Array.isArray(datos.articulos) ? datos.articulos : [],
+        imagen: datos.adjunto || null,
       });
     }
     open()
@@ -99,10 +101,14 @@ const FacturaVenta = () => {
 
   const FormComponent = ({ close, update }) => {
     const guardar = async (model: any) => {
-      if (model.id) {
-        await AplicationConnect.put<any>(`${url}/${model.id}`, model);
+      const isFormData = model instanceof FormData;
+      const modelId = isFormData ? model.get('id') : model.id;
+      const config = isFormData ? { headers: { 'Content-Type': 'multipart/form-data' } } : undefined;
+
+      if (modelId) {
+        await AplicationConnect.put<any>(`${url}/${modelId}`, model, config);
       } else {
-        await AplicationConnect.post<any>(`${url}`, model);
+        await AplicationConnect.post<any>(`${url}`, model, config);
       }
       await update();
       close();
@@ -110,7 +116,7 @@ const FacturaVenta = () => {
 
 
     const handleClose = () => {
-      reset({ articulos: [] });
+      reset({ articulos: [], imagen: null });
       close();
     };
 
