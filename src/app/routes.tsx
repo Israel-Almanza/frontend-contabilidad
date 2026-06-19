@@ -36,6 +36,7 @@ import LibroMayorPage from '../pages/contabilidad/reportes/LibroMayorPage';
 import EstadoResultadoPage from '../pages/contabilidad/reportes/EstadoResultadoPage';
 import BalanceGeneralPage from '../pages/contabilidad/reportes/BalanceGeneralPage';
 import BalanceComprobacionPage from '../pages/contabilidad/reportes/BalanceComprobacionPage';
+import HomePage from '../pages/home/HomePage';
 //import materialRoutes from 'app/views/material-kit/MaterialRoutes';
 
 // session pages
@@ -147,6 +148,8 @@ const routes = [
 
   { path: '/session/signup', element: <JwtRegister /> },
   { path: '/session/forgot-password', element: <ForgotPassword /> },
+
+  { path: '/home', element: <HomePage /> },
 
   { path: '/', element: <Navigate to="dashboard/default" /> },
   { path: '*', element: <NotFound /> }
