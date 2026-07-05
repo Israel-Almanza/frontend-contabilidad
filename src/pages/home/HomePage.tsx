@@ -32,6 +32,9 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
+import AplicationConnect from "../../core/api/AplicationConnect";
+import { useEffect, useState } from "react";
+import { BASE_URL } from "../../app/constans/contantes";
 
 const products = [
   {
@@ -93,6 +96,317 @@ const products = [
 ];
 
 export default function HomePage() {
+  const [productos, setProductos] = useState([])
+  const host = window.location.hostname;
+  // tienda-xyz.localhost
+
+  const subdomain = host.split(".")[0];
+  console.log('print subdomiio ', subdomain)
+  // tienda-xyz
+  useEffect(() => {
+    getProductos()
+  }, []);
+
+  const getProductos = async () => {
+    const { datos } = await AplicationConnect.get(`/public/articulos?dominio=tienda-xyz${subdomain}`)
+    console.log('productos :::: ', datos)
+    setProductos(datos.rows)
+  }
+
+  function Products() {
+    return (
+      <Container maxWidth="xl" sx={{ py: 5 }}>
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: 700,
+            mb: 1,
+            color: "#3f220f",
+          }}
+        >
+          Nuestros productos
+        </Typography>
+
+        <Typography color="text.secondary" mb={4}>
+          Cafés seleccionados para verdaderos amantes del café.
+        </Typography>
+
+        <Grid container spacing={3}>
+          {/* Sidebar */}
+          <Grid size={{ xs: 12, md: 3 }}>
+            <Paper
+              elevation={0}
+              sx={{
+                p: 3,
+                borderRadius: 3,
+                border: "1px solid #ece4dc",
+                position: "sticky",
+                top: 20,
+              }}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: 700,
+                  color: "#3f220f",
+                  mb: 3,
+                }}
+              >
+                Filtros
+              </Typography>
+
+              {/* Categorias */}
+
+              <Typography
+                sx={{
+                  fontWeight: 600,
+                  mb: 2,
+                }}
+              >
+                Categorías
+              </Typography>
+
+              <Stack spacing={1.5}>
+                <FormControlLabel
+                  control={<Checkbox />}
+                  label={
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        width: "100%",
+                      }}
+                    >
+                      <span>Café en grano</span>
+                      <Typography
+                        variant="caption"
+                        color="text.secondary"
+                      >
+                        (12)
+                      </Typography>
+                    </Box>
+                  }
+                />
+
+                <FormControlLabel
+                  control={<Checkbox />}
+                  label={
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        width: "100%",
+                      }}
+                    >
+                      <span>Café molido</span>
+                      <Typography
+                        variant="caption"
+                        color="text.secondary"
+                      >
+                        (8)
+                      </Typography>
+                    </Box>
+                  }
+                />
+
+                <FormControlLabel
+                  control={<Checkbox />}
+                  label={
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        width: "100%",
+                      }}
+                    >
+                      <span>Cápsulas</span>
+                      <Typography
+                        variant="caption"
+                        color="text.secondary"
+                      >
+                        (5)
+                      </Typography>
+                    </Box>
+                  }
+                />
+
+                <FormControlLabel
+                  control={<Checkbox />}
+                  label={
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        width: "100%",
+                      }}
+                    >
+                      <span>Accesorios</span>
+                      <Typography
+                        variant="caption"
+                        color="text.secondary"
+                      >
+                        (4)
+                      </Typography>
+                    </Box>
+                  }
+                />
+              </Stack>
+
+              <Divider sx={{ my: 3 }} />
+
+              {/* Tipo Cafe */}
+
+
+              {/* Rango Precio */}
+
+              <Typography
+                sx={{
+                  fontWeight: 600,
+                  mb: 2,
+                }}
+              >
+                Rango de precio
+              </Typography>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: 1,
+                }}
+              >
+                <TextField
+                  size="small"
+                  placeholder="Min"
+                  fullWidth
+                />
+
+                <TextField
+                  size="small"
+                  placeholder="Max"
+                  fullWidth
+                />
+              </Box>
+
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{
+                  mt: 3,
+                  bgcolor: "#4e2b17",
+                  borderRadius: 2,
+                }}
+              >
+                Aplicar filtros
+              </Button>
+            </Paper>
+          </Grid>
+
+          {/* Productos */}
+          <Grid size={{ xs: 12, md: 9 }}>
+            <Box
+              sx={{
+                display: "flex",
+                gap: 2,
+                mb: 3,
+              }}
+            >
+              <TextField
+                fullWidth
+                placeholder="Buscar productos..."
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Box>
+
+            <Grid container spacing={3}>
+              {productos.map((item) => (
+                <Grid
+                  key={item.id}
+                  size={{ xs: 12, sm: 6, lg: 3 }}
+                >
+                  <Card
+                    sx={{
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      borderRadius: 3,
+                      boxShadow: "none",
+                      border: "1px solid #ece4dc",
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      height="250"
+                      image={`${BASE_URL}${item.imagen}`}
+                    />
+
+                    <CardContent
+                      sx={{
+                        flexGrow: 1,
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <Typography
+                        variant="h6"
+                        fontWeight={700}
+                      >
+                        {item.nombre}
+                      </Typography>
+
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          mt: 1,
+                          minHeight: 48,
+                        }}
+                      >
+                        {item.descripcion}
+                      </Typography>
+
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          mt: 2,
+                          color: "#4e2b17",
+                          fontWeight: 700,
+                        }}
+                      >
+                        Bs {item.precioVenta}
+                      </Typography>
+
+                      <Button
+                        fullWidth
+                        variant="outlined"
+                        sx={{
+                          mt: "auto",
+                          color: "#4e2b17",
+                          borderColor: "#cdb8a5",
+
+                          "&:hover": {
+                            borderColor: "#4e2b17",
+                            backgroundColor: "#f8f2ed",
+                          },
+                        }}
+                      >
+                        Ver detalle
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+        </Grid>
+      </Container>
+    );
+  }
   return (
     <Box sx={{ bgcolor: "#faf7f4" }}>
       <Header />
@@ -269,300 +583,7 @@ function Hero() {
   );
 }
 
-function Products() {
-  return (
-    <Container maxWidth="xl" sx={{ py: 5 }}>
-      <Typography
-        variant="h4"
-        sx={{
-          fontWeight: 700,
-          mb: 1,
-          color: "#3f220f",
-        }}
-      >
-        Nuestros productos
-      </Typography>
 
-      <Typography color="text.secondary" mb={4}>
-        Cafés seleccionados para verdaderos amantes del café.
-      </Typography>
-
-      <Grid container spacing={3}>
-        {/* Sidebar */}
-        <Grid size={{ xs: 12, md: 3 }}>
-          <Paper
-            elevation={0}
-            sx={{
-              p: 3,
-              borderRadius: 3,
-              border: "1px solid #ece4dc",
-              position: "sticky",
-              top: 20,
-            }}
-          >
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 700,
-                color: "#3f220f",
-                mb: 3,
-              }}
-            >
-              Filtros
-            </Typography>
-
-            {/* Categorias */}
-
-            <Typography
-              sx={{
-                fontWeight: 600,
-                mb: 2,
-              }}
-            >
-              Categorías
-            </Typography>
-
-            <Stack spacing={1.5}>
-              <FormControlLabel
-                control={<Checkbox />}
-                label={
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      width: "100%",
-                    }}
-                  >
-                    <span>Café en grano</span>
-                    <Typography
-                      variant="caption"
-                      color="text.secondary"
-                    >
-                      (12)
-                    </Typography>
-                  </Box>
-                }
-              />
-
-              <FormControlLabel
-                control={<Checkbox />}
-                label={
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      width: "100%",
-                    }}
-                  >
-                    <span>Café molido</span>
-                    <Typography
-                      variant="caption"
-                      color="text.secondary"
-                    >
-                      (8)
-                    </Typography>
-                  </Box>
-                }
-              />
-
-              <FormControlLabel
-                control={<Checkbox />}
-                label={
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      width: "100%",
-                    }}
-                  >
-                    <span>Cápsulas</span>
-                    <Typography
-                      variant="caption"
-                      color="text.secondary"
-                    >
-                      (5)
-                    </Typography>
-                  </Box>
-                }
-              />
-
-              <FormControlLabel
-                control={<Checkbox />}
-                label={
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      width: "100%",
-                    }}
-                  >
-                    <span>Accesorios</span>
-                    <Typography
-                      variant="caption"
-                      color="text.secondary"
-                    >
-                      (4)
-                    </Typography>
-                  </Box>
-                }
-              />
-            </Stack>
-
-            <Divider sx={{ my: 3 }} />
-
-            {/* Tipo Cafe */}
-
-
-            {/* Rango Precio */}
-
-            <Typography
-              sx={{
-                fontWeight: 600,
-                mb: 2,
-              }}
-            >
-              Rango de precio
-            </Typography>
-
-            <Box
-              sx={{
-                display: "flex",
-                gap: 1,
-              }}
-            >
-              <TextField
-                size="small"
-                placeholder="Min"
-                fullWidth
-              />
-
-              <TextField
-                size="small"
-                placeholder="Max"
-                fullWidth
-              />
-            </Box>
-
-            <Button
-              fullWidth
-              variant="contained"
-              sx={{
-                mt: 3,
-                bgcolor: "#4e2b17",
-                borderRadius: 2,
-              }}
-            >
-              Aplicar filtros
-            </Button>
-          </Paper>
-        </Grid>
-
-        {/* Productos */}
-        <Grid size={{ xs: 12, md: 9 }}>
-          <Box
-            sx={{
-              display: "flex",
-              gap: 2,
-              mb: 3,
-            }}
-          >
-            <TextField
-              fullWidth
-              placeholder="Buscar productos..."
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Box>
-
-          <Grid container spacing={3}>
-            {products.map((item) => (
-              <Grid
-                key={item.id}
-                size={{ xs: 12, sm: 6, lg: 3 }}
-              >
-                <Card
-                  sx={{
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    borderRadius: 3,
-                    boxShadow: "none",
-                    border: "1px solid #ece4dc",
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    height="250"
-                    image={item.image}
-                  />
-
-                  <CardContent
-                    sx={{
-                      flexGrow: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      fontWeight={700}
-                    >
-                      {item.name}
-                    </Typography>
-
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{
-                        mt: 1,
-                        minHeight: 48,
-                      }}
-                    >
-                      {item.description}
-                    </Typography>
-
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        mt: 2,
-                        color: "#4e2b17",
-                        fontWeight: 700,
-                      }}
-                    >
-                      Bs {item.price}
-                    </Typography>
-
-                    <Button
-                      fullWidth
-                      variant="outlined"
-                      sx={{
-                        mt: "auto",
-                        color: "#4e2b17",
-                        borderColor: "#cdb8a5",
-
-                        "&:hover": {
-                          borderColor: "#4e2b17",
-                          backgroundColor: "#f8f2ed",
-                        },
-                      }}
-                    >
-                      Ver detalle
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Grid>
-      </Grid>
-    </Container>
-  );
-}
 
 function Benefits() {
   return (
