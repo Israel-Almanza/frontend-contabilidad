@@ -108,7 +108,7 @@ export default function HomePage() {
   }, []);
 
   const getProductos = async () => {
-    const { datos } = await AplicationConnect.get(`/public/articulos?dominio=tienda-xyz${subdomain}`)
+    const { datos } = await AplicationConnect.get(`/public/articulos?dominio=${subdomain}`)
     console.log('productos :::: ', datos)
     setProductos(datos.rows)
   }
