@@ -46,8 +46,7 @@ import {
   Instagram,
   WhatsApp,
 } from "@mui/icons-material";
-import FooterTemplete from "./FooterTemplate";
-import HeaderTemplate from "./HeaderTemplate";
+import LayoutTemplate from "./LayoutTemplate";
 
 interface Producto {
   id: number;
@@ -123,26 +122,20 @@ export default function VerProductoPage() {
   const [favorito, setFavorito] = useState(false);
 
   return (
-
-    <Box
-      sx={{
-        background: "#faf8f6",
-        minHeight: "100vh"
-      }}
-    >
-
-      {/* ================= HEADER ================= */}
-
-      <HeaderTemplate />
-      {/* ================= CONTENIDO ================= */}
-
-      <Container
-        maxWidth="xl"
+    <LayoutTemplate>
+      <Box
         sx={{
-          mt: 4,
-          mb: 6
+          background: "#faf8f6",
+          minHeight: "100vh"
         }}
       >
+        <Container
+          maxWidth="xl"
+          sx={{
+            mt: 4,
+            mb: 6
+          }}
+        >
 
         <Breadcrumbs sx={{ mb: 4 }}>
 
@@ -992,12 +985,8 @@ export default function VerProductoPage() {
 
         </Box>
 
-        {/* ======================================================== */}
-        {/* ======================================================== */}
-        {/* FOOTER */}
-        <FooterTemplete />
-      </Container>
-    </Box>
-
+        </Container>
+      </Box>
+    </LayoutTemplate>
   );
 }

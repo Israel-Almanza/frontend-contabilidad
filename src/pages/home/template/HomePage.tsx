@@ -25,8 +25,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import AplicationConnect from "../../../core/api/AplicationConnect";
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../../app/constans/contantes";
-import FooterTemplete from "./FooterTemplate";
-import HeaderTemplate from "./HeaderTemplate";
+import LayoutTemplate from "./LayoutTemplate";
 
 const products = [
   {
@@ -351,13 +350,13 @@ export default function HomePage() {
     );
   }
   return (
-    <Box sx={{ bgcolor: "#faf7f4" }}>
-      <HeaderTemplate />
-      <Hero />
-      <Products />
-      <Benefits />
-      <FooterTemplete />
-    </Box>
+    <LayoutTemplate>
+      <Box sx={{ bgcolor: "#faf7f4" }}>
+        <Hero />
+        <Products />
+        <Benefits />
+      </Box>
+    </LayoutTemplate>
   );
 }
 
