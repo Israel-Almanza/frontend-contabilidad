@@ -18,6 +18,7 @@ import {
   Divider,
   FormControlLabel,
   Checkbox,
+  Link,
 } from "@mui/material";
 
 import SearchIcon from "@mui/icons-material/Search";
@@ -32,9 +33,9 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
-import AplicationConnect from "../../core/api/AplicationConnect";
+import AplicationConnect from "../../../core/api/AplicationConnect";
 import { useEffect, useState } from "react";
-import { BASE_URL } from "../../app/constans/contantes";
+import { BASE_URL } from "../../../app/constans/contantes";
 
 const products = [
   {
@@ -715,15 +716,78 @@ function Footer() {
             </Box>
           </Grid>
 
-          <Grid size={{ xs: 12, md: 4 }}>
-            <Typography fontWeight={700}>
-              Navegación
+          <Grid size={{ xs: 6, md: 2 }}>
+
+            <Typography
+              variant="h6"
+              fontWeight={700}
+              mb={3}
+            >
+              Menú
             </Typography>
 
-            <Typography>Inicio</Typography>
-            <Typography>Productos</Typography>
-            <Typography>Nosotros</Typography>
-            <Typography>Contacto</Typography>
+            <Stack spacing={2}>
+
+              <Link color="inherit" underline="hover">
+                Inicio
+              </Link>
+
+              <Link color="inherit" underline="hover">
+                Productos
+              </Link>
+
+              <Link color="inherit" underline="hover">
+                Nosotros
+              </Link>
+
+              <Link color="inherit" underline="hover">
+                Blog
+              </Link>
+
+              <Link color="inherit" underline="hover">
+                Contacto
+              </Link>
+
+            </Stack>
+
+          </Grid>
+
+
+          {/* CATEGORIAS */}
+
+          <Grid size={{ xs: 6, md: 2 }}>
+            <Typography
+              variant="h6"
+              fontWeight={700}
+              mb={3}
+            >
+              Categorías
+            </Typography>
+
+            <Stack spacing={2}>
+
+              <Link color="inherit" underline="hover">
+                Café Molido
+              </Link>
+
+              <Link color="inherit" underline="hover">
+                Café en Grano
+              </Link>
+
+              <Link color="inherit" underline="hover">
+                Accesorios
+              </Link>
+
+              <Link color="inherit" underline="hover">
+                Tazas
+              </Link>
+
+              <Link color="inherit" underline="hover">
+                Promociones
+              </Link>
+
+            </Stack>
+
           </Grid>
 
 
