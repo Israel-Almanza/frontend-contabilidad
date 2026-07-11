@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -115,6 +116,7 @@ function TabPanel(props: TabPanelProps) {
 
 export default function VerProductoPage() {
 
+  const navigate = useNavigate();
   const [imagen, setImagen] = useState(imagenes[0]);
   const [cantidad, setCantidad] = useState(1);
   const [peso, setPeso] = useState("250");
@@ -139,7 +141,11 @@ export default function VerProductoPage() {
 
         <Breadcrumbs sx={{ mb: 4 }}>
 
-          <Link underline="hover">
+          <Link 
+            underline="hover" 
+            sx={{ cursor: 'pointer' }}
+            onClick={() => navigate('/home')}
+          >
 
             Inicio
 

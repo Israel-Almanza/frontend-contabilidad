@@ -25,7 +25,11 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import { useNavigate } from "react-router-dom";
+
 export default function HeaderTemplate() {
+    const navigate = useNavigate();
+
     return (
         <AppBar
             position="static"
@@ -39,13 +43,15 @@ export default function HeaderTemplate() {
                     sx={{
                         flexGrow: 1,
                         fontWeight: 700,
+                        cursor: 'pointer'
                     }}
+                    onClick={() => navigate('/home')}
                 >
                     ☕ TIENDA CAFÉ
                 </Typography>
 
                 <Box sx={{ display: "flex", gap: 3 }}>
-                    <Button color="inherit">Inicio</Button>
+                    <Button color="inherit" onClick={() => navigate('/home')}>Inicio</Button>
                     <Button color="inherit">Productos</Button>
                     <Button color="inherit">Nosotros</Button>
                     <Button color="inherit">Blog</Button>

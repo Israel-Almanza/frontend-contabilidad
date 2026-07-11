@@ -26,6 +26,7 @@ import AplicationConnect from "../../../core/api/AplicationConnect";
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../../app/constans/contantes";
 import LayoutTemplate from "./LayoutTemplate";
+import { useNavigate } from "react-router-dom";
 
 const products = [
   {
@@ -39,6 +40,7 @@ const products = [
 
 export default function HomePage() {
   const [productos, setProductos] = useState([])
+  const navigate = useNavigate();
   const host = window.location.hostname;
   // tienda-xyz.localhost
 
@@ -54,6 +56,10 @@ export default function HomePage() {
     console.log('productos :::: ', datos)
     setProductos(datos.rows)
   }
+
+  const handleVerDetalle = (productoId: number) => {
+    navigate('/ver-producto');
+  };
 
   function Products() {
     return (
@@ -326,6 +332,7 @@ export default function HomePage() {
                       <Button
                         fullWidth
                         variant="outlined"
+                        onClick={() => handleVerDetalle(item.id)}
                         sx={{
                           mt: "auto",
                           color: "#4e2b17",
