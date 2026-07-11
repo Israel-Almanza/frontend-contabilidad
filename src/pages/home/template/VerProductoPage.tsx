@@ -46,6 +46,8 @@ import {
   Instagram,
   WhatsApp,
 } from "@mui/icons-material";
+import FooterTemplete from "./FooterTemplate";
+import HeaderTemplate from "./HeaderTemplate";
 
 interface Producto {
   id: number;
@@ -131,6 +133,7 @@ export default function VerProductoPage() {
 
       {/* ================= HEADER ================= */}
 
+      <HeaderTemplate />
       {/* ================= CONTENIDO ================= */}
 
       <Container
@@ -990,10 +993,9 @@ export default function VerProductoPage() {
         </Box>
 
         {/* ======================================================== */}
-
-
         {/* ======================================================== */}
         {/* FOOTER */}
+        <FooterTemplete />
       </Container>
     </Box>
 

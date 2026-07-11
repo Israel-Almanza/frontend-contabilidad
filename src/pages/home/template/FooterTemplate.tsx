@@ -1,4 +1,31 @@
-function Footer() {
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Box,
+  Button,
+  Container,
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+  TextField,
+  InputAdornment,
+  IconButton,
+  Paper,
+  Stack,
+  Link,
+} from "@mui/material";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import MusicNoteIcon from "@mui/icons-material/MusicNote"; // TikTok aproximado
+
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
+export default function FooterTemplete() {
   return (
     <Box
       sx={{
