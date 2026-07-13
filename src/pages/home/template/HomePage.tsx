@@ -40,6 +40,8 @@ const products = [
 
 export default function HomePage() {
   const [productos, setProductos] = useState([])
+  const [categorias, setCategorias] = useState([])
+  const [infoEmpresa, setInfoEmpresa] = useState({})
   const navigate = useNavigate();
   const host = window.location.hostname;
   // tienda-xyz.localhost
@@ -48,14 +50,31 @@ export default function HomePage() {
   console.log('print subdomiio ', subdomain)
   // tienda-xyz
   useEffect(() => {
+    getEmpresa()
     getProductos()
+    getCategorias()
   }, []);
 
+  const getEmpresa = async () => {
+    const { datos } = await AplicationConnect.post(`/public/comercio/empresas`, {
+      dominio: subdomain
+    })
+    setInfoEmpresa(datos)
+
+  }
+
+  const getCategorias = async () => {
+    const { datos } = await AplicationConnect.get(`/public/comercio/categorias?dominio=${subdomain}`)
+    setCategorias(datos.rows)
+
+  }
+
   const getProductos = async () => {
-    const { datos } = await AplicationConnect.get(`/public/articulos?dominio=${subdomain}`)
-    console.log('productos :::: ', datos)
+    const { datos } = await AplicationConnect.get(`/public/comercio/articulos?dominio=${subdomain}`)
     setProductos(datos.rows)
   }
+
+
 
   const handleVerDetalle = (productoId: number) => {
     navigate('/ver-producto');
@@ -115,89 +134,38 @@ export default function HomePage() {
               </Typography>
 
               <Stack spacing={1.5}>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "100%",
-                      }}
-                    >
-                      <span>Café en grano</span>
-                      <Typography
-                        variant="caption"
-                        color="text.secondary"
+                {categorias.map((categoria) => (
+                  <FormControlLabel
+                    key={categoria.id}
+                    control={<Checkbox />}
+                    label={
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          width: "100%",
+                          alignItems: "center",
+                        }}
                       >
-                        (12)
-                      </Typography>
-                    </Box>
-                  }
-                />
+                        <Typography variant="body2">
+                          {categoria.nombre}
+                        </Typography>
 
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "100%",
-                      }}
-                    >
-                      <span>Café molido</span>
-                      <Typography
-                        variant="caption"
-                        color="text.secondary"
-                      >
-                        (8)
-                      </Typography>
-                    </Box>
-                  }
-                />
-
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "100%",
-                      }}
-                    >
-                      <span>Cápsulas</span>
-                      <Typography
-                        variant="caption"
-                        color="text.secondary"
-                      >
-                        (5)
-                      </Typography>
-                    </Box>
-                  }
-                />
-
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label={
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        width: "100%",
-                      }}
-                    >
-                      <span>Accesorios</span>
-                      <Typography
-                        variant="caption"
-                        color="text.secondary"
-                      >
-                        (4)
-                      </Typography>
-                    </Box>
-                  }
-                />
+                        <Typography
+                          variant="caption"
+                          color="text.secondary"
+                        >
+                          ({categoria?.cantidad})
+                        </Typography>
+                      </Box>
+                    }
+                    sx={{
+                      m: 0,
+                      width: "100%",
+                      alignItems: "center",
+                    }}
+                  />
+                ))}
               </Stack>
 
               <Divider sx={{ my: 3 }} />

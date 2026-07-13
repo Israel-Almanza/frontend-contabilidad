@@ -15,7 +15,8 @@ const AuthGuard = ({ children }:any) => {
   //comentado por istael
  // if (isAuthenticated) return <>{children}</>;
 
-  return <Navigate replace to="/session/signin" state={{ from: pathname }} />;
+  // return <Navigate replace to="/session/signin" state={{ from: pathname }} />;
+  return <Navigate replace to="/home" state={{ from: pathname }} />;
 };
 
 export default AuthGuard;
