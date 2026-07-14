@@ -26,9 +26,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { useNavigate } from "react-router-dom";
+import { useEmpresa } from "./EmpresaContext";
 
 export default function HeaderTemplate() {
     const navigate = useNavigate();
+    const { infoEmpresa } = useEmpresa();
 
     return (
         <AppBar
@@ -38,17 +40,27 @@ export default function HeaderTemplate() {
             }}
         >
             <Toolbar sx={{ py: 1 }}>
-                <Typography
-                    variant="h5"
+                <Box
                     sx={{
                         flexGrow: 1,
-                        fontWeight: 700,
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 2,
                         cursor: 'pointer'
                     }}
                     onClick={() => navigate('/home')}
                 >
-                    ☕ TIENDA CAFÉ
-                </Typography>
+
+                    <Typography
+                        variant="h5"
+                        sx={{
+                            fontWeight: 700,
+                        }}
+                    >
+                        ☕ {infoEmpresa.nombre}
+                    </Typography>
+
+                </Box>
 
                 <Box sx={{ display: "flex", gap: 3 }}>
                     <Button color="inherit" onClick={() => navigate('/home')}>Inicio</Button>

@@ -27,6 +27,7 @@ import { useEffect, useState } from "react";
 import { BASE_URL } from "../../../app/constans/contantes";
 import LayoutTemplate from "./LayoutTemplate";
 import { useNavigate } from "react-router-dom";
+import { useEmpresa } from "./EmpresaContext";
 
 const products = [
   {
@@ -41,7 +42,7 @@ const products = [
 export default function HomePage() {
   const [productos, setProductos] = useState([])
   const [categorias, setCategorias] = useState([])
-  const [infoEmpresa, setInfoEmpresa] = useState({})
+  const { infoEmpresa } = useEmpresa();
   const navigate = useNavigate();
   const host = window.location.hostname;
   // tienda-xyz.localhost
@@ -50,23 +51,13 @@ export default function HomePage() {
   console.log('print subdomiio ', subdomain)
   // tienda-xyz
   useEffect(() => {
-    getEmpresa()
     getProductos()
     getCategorias()
   }, []);
 
-  const getEmpresa = async () => {
-    const { datos } = await AplicationConnect.post(`/public/comercio/empresas`, {
-      dominio: subdomain
-    })
-    setInfoEmpresa(datos)
-
-  }
-
   const getCategorias = async () => {
     const { datos } = await AplicationConnect.get(`/public/comercio/categorias?dominio=${subdomain}`)
     setCategorias(datos.rows)
-
   }
 
   const getProductos = async () => {
@@ -327,7 +318,7 @@ export default function HomePage() {
   return (
     <LayoutTemplate>
       <Box sx={{ bgcolor: "#faf7f4" }}>
-        <Hero />
+        <Hero infoEmpresa={infoEmpresa} />
         <Products />
         <Benefits />
       </Box>
@@ -336,7 +327,7 @@ export default function HomePage() {
 }
 
 
-function Hero() {
+function Hero({ infoEmpresa }: { infoEmpresa: any }) {
   return (
     <Container maxWidth="xl" sx={{ mt: 2 }}>
       <Box
@@ -351,8 +342,8 @@ function Hero() {
         {/* Imagen */}
         <Box
           component="img"
-          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
-          alt="Café"
+          src={infoEmpresa.banner || "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"}
+          alt="Banner"
           sx={{
             position: "absolute",
             right: 0,
@@ -422,8 +413,7 @@ function Hero() {
               fontSize: 18,
             }}
           >
-            Descubre nuestra selección de cafés de alta
-            calidad, cuidadosamente elegidos para ti.
+            {infoEmpresa.descripcion || "Descubre nuestra selección de cafés de alta calidad, cuidadosamente elegidos para ti."}
           </Typography>
 
           <Stack direction="row" spacing={2}>

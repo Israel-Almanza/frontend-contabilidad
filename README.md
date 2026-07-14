@@ -30,3 +30,11 @@ en el paso 1 y 2
 quitar de la carpeta vite.config.ts(ubcacion raiz del proyecto) la linea de codigo " base:'/SistemaGeneralF'"
 # paso2
 quitar la linea de codigo de la carpeta main.tsx(ubicacion src/main.tsx) basename="/SistemaGeneralF"
+
+
+
+# Congiuracion para digital ocean
+# Subir el arhcivo dist al servidor 
+scp -r dist/* root@134.209.223.115:/var/www/frontend-contabilidad/dist/   
+# Paso dos permismos a la carpeta dist del servidor
+ 
