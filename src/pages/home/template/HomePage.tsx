@@ -25,9 +25,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import AplicationConnect from "../../../core/api/AplicationConnect";
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../../app/constans/contantes";
-import LayoutTemplate from "./LayoutTemplate";
+import LayoutTemplate from "./components/LayoutTemplate";
 import { useNavigate } from "react-router-dom";
-import { useEmpresa } from "./EmpresaContext";
+import { useEmpresa } from "./components/EmpresaContext";
+import Producto from "./components/CardProducto";
 
 export default function HomePage() {
   const [productos, setProductos] = useState([])
@@ -222,82 +223,7 @@ export default function HomePage() {
 
             <Grid container spacing={3}>
               {productos.map((item) => (
-                <Grid
-                  key={item.id}
-                  size={{ xs: 12, sm: 6, lg: 3 }}
-                >
-                  <Card
-                    sx={{
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                      borderRadius: 3,
-                      boxShadow: "none",
-                      border: "1px solid #ece4dc",
-                    }}
-                  >
-                    <CardMedia
-                      component="img"
-                      height="250"
-                      image={`${BASE_URL}${item.imagen}`}
-                    />
-
-                    <CardContent
-                      sx={{
-                        flexGrow: 1,
-                        display: "flex",
-                        flexDirection: "column",
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        fontWeight={700}
-                      >
-                        {item.nombre}
-                      </Typography>
-
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{
-                          mt: 1,
-                          minHeight: 48,
-                        }}
-                      >
-                        {item.descripcion}
-                      </Typography>
-
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          mt: 2,
-                          color: "#4e2b17",
-                          fontWeight: 700,
-                        }}
-                      >
-                        Bs {item.precioVenta}
-                      </Typography>
-
-                      <Button
-                        fullWidth
-                        variant="outlined"
-                        onClick={() => handleVerDetalle(item.id)}
-                        sx={{
-                          mt: "auto",
-                          color: "#4e2b17",
-                          borderColor: "#cdb8a5",
-
-                          "&:hover": {
-                            borderColor: "#4e2b17",
-                            backgroundColor: "#f8f2ed",
-                          },
-                        }}
-                      >
-                        Ver detalle
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Grid>
+                <Producto producto={item}/>
               ))}
             </Grid>
           </Grid>

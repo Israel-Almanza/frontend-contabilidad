@@ -12,6 +12,7 @@ import {
   TextField,
   InputAdornment,
   IconButton,
+  Avatar,
   Paper,
   Stack,
   Link,
@@ -25,7 +26,10 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
+import { useEmpresa } from "./EmpresaContext";
+import { buildImageUrl } from "../../../../app/utils/manejoUrl";
 export default function FooterTemplete() {
+  const { infoEmpresa } = useEmpresa();
   return (
     <Box
       sx={{
@@ -38,15 +42,15 @@ export default function FooterTemplete() {
       <Container maxWidth="xl">
         <Grid container spacing={4}>
           <Grid size={{ xs: 12, md: 4 }}>
-            <Typography
-              variant="h5"
+            <Avatar
+              src={buildImageUrl(infoEmpresa.logo)}
+              alt="Configura tu logo"
+              variant="rounded"
               sx={{
-                fontWeight: 700,
-                mb: 2,
+                width: 48,
+                height: 48,
               }}
-            >
-              ☕ TIENDA CAFÉ
-            </Typography>
+            />
 
             <Typography
               sx={{
@@ -55,8 +59,7 @@ export default function FooterTemplete() {
                 mb: 3,
               }}
             >
-              Pasión por el café, compromiso con la calidad.
-              Llevamos lo mejor del café a tu hogar.
+              {infoEmpresa.descripcion}
             </Typography>
 
             <Box

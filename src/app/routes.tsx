@@ -38,7 +38,7 @@ import BalanceGeneralPage from '../pages/contabilidad/reportes/BalanceGeneralPag
 import BalanceComprobacionPage from '../pages/contabilidad/reportes/BalanceComprobacionPage';
 import HomePage from '../pages/home/template/HomePage';
 import VerProductoPage from '../pages/home/template/VerProductoPage';
-import EmpresaLayout from '../pages/home/template/EmpresaLayout';
+import EmpresaLayout from '../pages/home/template/components/EmpresaLayout';
 //import materialRoutes from 'app/views/material-kit/MaterialRoutes';
 
 // session pages
@@ -159,7 +159,7 @@ const routes = [
         element: <HomePage />
       },
       {
-        path: "/ver-producto",
+        path: "/ver-producto/:id",
         element: <VerProductoPage />
       }
     ]

@@ -28,7 +28,7 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 
 import { useNavigate } from "react-router-dom";
 import { useEmpresa } from "./EmpresaContext";
-import { BASE_URL } from "../../../app/constans/contantes";
+import { buildImageUrl } from "../../../../app/utils/manejoUrl";
 
 export default function HeaderTemplate() {
     const navigate = useNavigate();
@@ -87,7 +87,7 @@ export default function HeaderTemplate() {
                         onClick={() => navigate("/home")}
                     >
                         <Avatar
-                            src={`${BASE_URL}${infoEmpresa.logo}`}
+                            src={buildImageUrl(infoEmpresa.logo)}
                             alt="Configura tu logo"
                             variant="rounded"
                             sx={{
@@ -200,19 +200,15 @@ export default function HeaderTemplate() {
                             p: 3,
                         }}
                     >
-                        {infoEmpresa.logo ? (
-                            <Avatar
-                                src={`${BASE_URL}${infoEmpresa.logo}`}
-                                alt={infoEmpresa.nombre}
-                                variant="rounded"
-                                sx={{
-                                    width: 50,
-                                    height: 50,
-                                }}
-                            />
-                        ) : (
-                            <Typography fontSize={32}>☕</Typography>
-                        )}
+                        <Avatar
+                            src={buildImageUrl(infoEmpresa.logo)}
+                            alt={infoEmpresa.nombre}
+                            variant="rounded"
+                            sx={{
+                                width: 50,
+                                height: 50,
+                            }}
+                        />
 
                         <Typography
                             variant="h6"

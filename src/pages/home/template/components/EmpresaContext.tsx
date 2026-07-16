@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import AplicationConnect from '../../../core/api/AplicationConnect';
+import AplicationConnect from '../../../../core/api/AplicationConnect';
 
 interface EmpresaData {
   nombre?: string;
