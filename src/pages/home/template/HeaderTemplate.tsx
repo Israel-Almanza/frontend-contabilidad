@@ -13,6 +13,7 @@ import {
     TextField,
     InputAdornment,
     IconButton,
+    Avatar,
     Paper,
     Stack,
     Chip,
@@ -27,6 +28,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { useNavigate } from "react-router-dom";
 import { useEmpresa } from "./EmpresaContext";
+import { BASE_URL } from "../../../app/constans/contantes";
 
 export default function HeaderTemplate() {
     const navigate = useNavigate();
@@ -46,10 +48,23 @@ export default function HeaderTemplate() {
                         display: "flex",
                         alignItems: "center",
                         gap: 2,
-                        cursor: 'pointer'
+                        cursor: "pointer",
                     }}
-                    onClick={() => navigate('/home')}
+                    onClick={() => navigate("/home")}
                 >
+                    {infoEmpresa.logo ? (
+                        <Avatar
+                            src={`${BASE_URL}${infoEmpresa.logo}`}
+                            alt={infoEmpresa.nombre}
+                            variant="rounded"
+                            sx={{
+                                width: 48,
+                                height: 48,
+                            }}
+                        />
+                    ) : (
+                        <Typography fontSize={32}>☕</Typography>
+                    )}
 
                     <Typography
                         variant="h5"
@@ -57,9 +72,8 @@ export default function HeaderTemplate() {
                             fontWeight: 700,
                         }}
                     >
-                        ☕ {infoEmpresa.nombre}
+                        {infoEmpresa.nombre}
                     </Typography>
-
                 </Box>
 
                 <Box sx={{ display: "flex", gap: 3 }}>

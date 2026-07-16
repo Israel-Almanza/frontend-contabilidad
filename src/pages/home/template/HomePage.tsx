@@ -29,16 +29,6 @@ import LayoutTemplate from "./LayoutTemplate";
 import { useNavigate } from "react-router-dom";
 import { useEmpresa } from "./EmpresaContext";
 
-const products = [
-  {
-    id: 1,
-    name: "Café 100% Arábica",
-    price: 45,
-    image: "https://picsum.photos/300/250?1",
-    description: "Suave y equilibrado con notas florales.",
-  }
-];
-
 export default function HomePage() {
   const [productos, setProductos] = useState([])
   const [categorias, setCategorias] = useState([])
@@ -342,7 +332,7 @@ function Hero({ infoEmpresa }: { infoEmpresa: any }) {
         {/* Imagen */}
         <Box
           component="img"
-          src={infoEmpresa.banner || "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"}
+          src={`${BASE_URL}${infoEmpresa.banner}`}
           alt="Banner"
           sx={{
             position: "absolute",
